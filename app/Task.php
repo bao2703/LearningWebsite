@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Slide extends Model
+class Task extends Model
 {
 	/**
 	 * The attributes that are mass assignable.
@@ -12,7 +12,7 @@ class Slide extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		'name', 'image', 'sort_order'
+		'description'
 	];
 
 	/**
@@ -25,11 +25,6 @@ class Slide extends Model
 
 	public function lesson()
 	{
-		return $this->belongsTo('App\Lesson');
-	}
-
-	public function task()
-	{
-		return $this->hasOne('App\Task');
+		return $this->belongsTo('App\Slide');
 	}
 }
