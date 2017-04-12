@@ -1,5 +1,9 @@
 @extends('client.shared.layout')
 
 @section('content')
-	Home index
+	<div class="container-fluid">
+		<div class="row">
+			Home
+		</div>
+	</div>
 @endsection

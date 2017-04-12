@@ -11,4 +11,6 @@
 |
 */
 
-Route::name('index')->get('/', 'HomeController@index');
+Route::name('home.index')->get('/', 'HomeController@index');
+
+Route::name('project.index')->get('/project', 'ProjectController@index');
