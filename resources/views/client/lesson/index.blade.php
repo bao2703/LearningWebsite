@@ -19,12 +19,17 @@
 						</div>
 					</div>
 					<div class="panel-body">
-						<div id="lesson-slide" class="carousel slide" data-ride="carousel">
+						<div id="lesson-slide" class="carousel" data-ride="carousel" data-interval="false">
 							<!-- carousel-inner -->
 							<div class="carousel-inner" role="listbox">
 								@foreach($lesson->slides as $slide)
 									<div class="item">
 										<img src="{{ asset($slide->image) }}" class="img-responsive">
+										<div class="col-xs-12" id="task-content">
+											<div class="text-center">
+												<h1 style="color: white">CHECKPOINT</h1>
+											</div>
+										</div>
 									</div>
 								@endforeach
 							</div>
@@ -33,21 +38,23 @@
 					</div>
 				</div>
 				<form id="" class="editor-form">
-				<div class="panel panel-success">
-					<div class="panel-heading clearfix">
-						<h6 class="panel-title pull-left" style="padding-top: 7.5px;">
-							Type your code here
-						</h6>
-						<div class="btn-group pull-right">
-							<button class="btn btn-success btn-sm" type="submit">
-								Run
-							</button>
+					<div class="panel panel-success">
+						<div class="panel-heading clearfix">
+							<h6 class="panel-title pull-left" style="padding-top: 7.5px;">
+								Type your code here
+							</h6>
+							<div class="btn-group pull-right">
+								<button class="btn btn-success btn-sm" type="submit">
+									Run
+								</button>
+							</div>
+						</div>
+						<div class="panel-body">
+							<div class="form-group">
+								<textarea class="form-control vresize" rows="7" id="user-input"></textarea>
+							</div>
 						</div>
 					</div>
-					<div class="form-group">
-						<input class="col-xs-12 form-control" id="user-input">
-					</div>
-				</div>
 				</form>
 			</div>
 			<div class="col-sm-7">
@@ -66,15 +73,4 @@
 			</div>
 		</div>
 	</div>
-
-	<script>
-        $(".editor-form").submit(function(e) {
-            e.preventDefault();
-            var input = $('#user-input').val();
-            var result = $('#result-content');
-            result.ready(function() {
-                result.contents().find("body").html(input);
-            });
-        });
-	</script>
 @endsection

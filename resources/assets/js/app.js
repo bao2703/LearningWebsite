@@ -13,12 +13,21 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
-
-const app = new Vue({
-    el: '#app'
-});
+// Vue.component('example', require('./components/Example.vue'));
+//
+// const app = new Vue({
+//     el: '#app'
+// });
 
 $(document).ready(function() {
     $(".carousel-inner").find(".item:first").addClass("active");
+
+    $(".editor-form").submit(function (e) {
+        e.preventDefault();
+        var input = $('#user-input').val();
+        var result = $('#result-content');
+        result.ready(function () {
+            result.contents().find("body").html(input);
+        });
+    });
 });
