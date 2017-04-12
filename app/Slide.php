@@ -12,7 +12,7 @@ class Slide extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		'name', 'image', 'sort_order'
+		'image', 'sort_order'
 	];
 
 	/**
