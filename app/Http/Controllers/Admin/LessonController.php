@@ -9,7 +9,7 @@ class LessonController extends AdminController
 {
     public function index($projectId)
     {
-    	$lessons = Lesson::all();
+    	$lessons = Lesson::where('project_id', $projectId)->get();
 	    return view('admin.lesson.index')->with('lessons', $lessons);
     }
 }

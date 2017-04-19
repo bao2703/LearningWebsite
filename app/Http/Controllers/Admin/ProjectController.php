@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\ProjectRequest;
 use App\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ProjectController extends AdminController
 {
@@ -18,9 +20,14 @@ class ProjectController extends AdminController
 		return view('admin.project.create');
 	}
 
-	public function store()
+	public function store(ProjectRequest $request)
 	{
-		return response("Ok", 200);
+		Project::create([
+			'name' => $request->name,
+			'title' => $request->title
+		]);
+		Session::flash('message', 'Record has been created successfully');
+		Session::flash('alert-class', 'alert-success');
 		return view('admin.project.create');
 	}
 }
