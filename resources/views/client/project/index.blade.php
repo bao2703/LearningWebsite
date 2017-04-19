@@ -13,7 +13,7 @@
 						<div class="panel-body">
 							<div class="list-group">
 								@foreach($project->lessons as $lesson)
-									<a href="{{ route('lesson.index', $lesson->id) }}" class="list-group-item">
+									<a href="{{ route('lesson.show', $lesson) }}" class="list-group-item">
 										{{ $lesson->name }}
 									</a>
 								@endforeach

@@ -7,9 +7,8 @@ use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
-    public function index($id)
+    public function show(Lesson $lesson)
     {
-	    $lesson = Lesson::find($id);
-	    return view('client.lesson.index')->with('lesson', $lesson);
+	    return view('client.lesson.show')->with('lesson', $lesson);
     }
 }
