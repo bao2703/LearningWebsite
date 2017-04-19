@@ -18,7 +18,7 @@ class CreateSlidesTable extends Migration
 			$table->string('image')->unique();
 			$table->integer('sort_order')->default(1);
 			$table->integer('lesson_id')->unsigned();
-			$table->foreign('lesson_id')->references('id')->on('lessons');
+			$table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}

@@ -1,12 +1,7 @@
 @extends('admin.shared.layout')
 
 @section('content')
-	<div id="modal" class="modal fade action-modal" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-			</div>
-		</div>
-	</div>
+	@include('shared.modal.modal')
 
 	<div class="panel panel-info">
 		<div class="panel-heading">
@@ -33,8 +28,11 @@
 				@foreach($projects as $project)
 					<tr>
 						<td>
-							<a href="{{ route('admin.project.edit', $project->id) }}" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal">
+							<a href="{{ route('admin.project.edit', $project) }}" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal">
 								<i class="fa fa-pencil"></i>
+							</a>
+							<a href="{{ route('admin.project.delete', $project) }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal">
+								<i class="fa fa-trash"></i>
 							</a>
 						</td>
 						<td>{{ $project->id }}</td>

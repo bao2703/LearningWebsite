@@ -1,6 +1,7 @@
-@include('shared.modal.header', ['title' => 'Create Project'])
-<form action="{{ route('admin.project.store') }}" method="post" class="modal-form">
+@include('shared.modal.header', ['title' => 'Delete Project'])
+<form action="{{ route('admin.project.destroy', $project) }}" method="post" class="modal-form">
 	{{ csrf_field() }}
+	<input type="hidden" name="_method" value="DELETE">
 	<div class="modal-body form-horizontal">
 		<div class="row">
 			<div class="col-sm-offset-1 col-sm-10">
@@ -13,7 +14,7 @@
 						Name
 					</label>
 					<div class="col-sm-9">
-						<input class="form-control" name="name"/>
+						<input class="form-control" name="name" value="{{ $project->name }}" readonly/>
 					</div>
 				</div>
 			</div>
@@ -23,15 +24,15 @@
 						Title
 					</label>
 					<div class="col-sm-9">
-						<input class="form-control" name="title"/>
+						<input class="form-control" name="title" value="{{ $project->title }}" readonly/>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	@include('shared.modal.footer', [
-		'submitButtonText' => 'Create',
-		'submitButtonClass' => 'btn-success'
+		'submitButtonText' => 'Delete',
+		'submitButtonClass' => 'btn-danger'
 	])
 </form>
 

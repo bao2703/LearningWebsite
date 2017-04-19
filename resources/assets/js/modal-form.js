@@ -9,11 +9,15 @@ $(document).ready(function() {
             processData: false,
             contentType: false,
             success: function(data) {
-                $('#errors').hide();
-                $('.modal-content').html(data);
-                $(".action-modal").on("hidden.bs.modal", function() {
-                    window.location = window.location;
-                });
+	            if ($('input[name="_method"]').val() === 'DELETE') {
+		            location.reload();
+	            } else {
+		            $('#errors').hide();
+		            $('.modal-content').html(data);
+		            $(".action-modal").on("hidden.bs.modal", function() {
+			            location.reload();
+		            });
+	            }
             },
             error: function(data) {
                 var errors = data.responseJSON;

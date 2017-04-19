@@ -1,7 +1,4 @@
-<div class="modal-header">
-	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	<h4 class="modal-title">Edit Project</h4>
-</div>
+@include('shared.modal.header', ['title' => 'Edit Project'])
 <form action="{{ route('admin.project.update', $project->id) }}" method="post" class="modal-form">
 	{{ csrf_field() }}
 	<input type="hidden" name="_method" value="PUT">
@@ -17,7 +14,7 @@
 						Name
 					</label>
 					<div class="col-sm-9">
-						<input class="form-control" name="name" value="{{ $project->name }}" />
+						<input class="form-control" name="name" value="{{ $project->name }}"/>
 					</div>
 				</div>
 			</div>
@@ -27,20 +24,16 @@
 						Title
 					</label>
 					<div class="col-sm-9">
-						<input class="form-control" name="title" value="{{ $project->title }}" />
+						<input class="form-control" name="title" value="{{ $project->title }}"/>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="modal-footer">
-		<button data-dismiss="modal" class="btn btn-default" id="cancel">
-			Cancel
-		</button>
-		<button class="btn btn-primary" type="submit">
-			Edit
-		</button>
-	</div>
+	@include('shared.modal.footer', [
+		'submitButtonText' => 'Edit',
+		'submitButtonClass' => 'btn-primary'
+	])
 </form>
 
 <script src="{{ asset('assets/js/modal-form.js') }}"></script>
