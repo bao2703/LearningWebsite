@@ -16,3 +16,8 @@ Route::name('home.index')->get('/', 'HomeController@index');
 Route::name('project.index')->get('/project', 'ProjectController@index');
 
 Route::name('lesson.index')->get('/lesson/{id}', 'LessonController@index');
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function() {
+	Route::resource('project', ProjectController::class);
+	Route::name('lesson.index')->get('/lesson/project-{id}', 'LessonController@index');
+});
