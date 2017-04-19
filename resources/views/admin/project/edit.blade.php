@@ -1,9 +1,10 @@
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	<h4 class="modal-title">Create Project</h4>
+	<h4 class="modal-title">Edit Project</h4>
 </div>
-<form action="{{ route('admin.project.store') }}" method="post" class="modal-form">
+<form action="{{ route('admin.project.update', $project->id) }}" method="post" class="modal-form">
 	{{ csrf_field() }}
+	<input type="hidden" name="_method" value="PUT">
 	<div class="modal-body form-horizontal">
 		<div class="row">
 			<div class="col-sm-offset-1 col-sm-10">
@@ -16,7 +17,7 @@
 						Name
 					</label>
 					<div class="col-sm-9">
-						<input class="form-control" name="name"/>
+						<input class="form-control" name="name" value="{{ $project->name }}" />
 					</div>
 				</div>
 			</div>
@@ -26,7 +27,7 @@
 						Title
 					</label>
 					<div class="col-sm-9">
-						<input class="form-control" name="title"/>
+						<input class="form-control" name="title" value="{{ $project->title }}" />
 					</div>
 				</div>
 			</div>
@@ -36,8 +37,8 @@
 		<button data-dismiss="modal" class="btn btn-default" id="cancel">
 			Cancel
 		</button>
-		<button class="btn btn-success" type="submit">
-			Create
+		<button class="btn btn-primary" type="submit">
+			Edit
 		</button>
 	</div>
 </form>

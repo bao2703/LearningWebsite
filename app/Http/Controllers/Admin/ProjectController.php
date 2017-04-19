@@ -30,4 +30,21 @@ class ProjectController extends AdminController
 		Session::flash('alert-class', 'alert-success');
 		return view('admin.project.create');
 	}
+
+	public function edit($id)
+	{
+		$project = Project::find($id);
+		return view('admin.project.edit')->with('project', $project);
+	}
+
+	public function update(ProjectRequest $request, $id)
+	{
+		$project = Project::find($id);
+        $project->name = $request->name;
+        $project->title = $request->title;
+        $project->save();
+        Session::flash('message', 'Record has been updated successfully');
+		Session::flash('alert-class', 'alert-success');
+		return view('admin.project.edit')->with('project', $project);
+	}
 }

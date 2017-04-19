@@ -21,4 +21,7 @@ mix.js('resources/assets/js/app.js', 'public/assets/js')
     .scripts([
         'node_modules/datatables.net/js/jquery.dataTables.js',
         'node_modules/datatables.net-bs/js/dataTables.bootstrap.js'
-    ], 'public/assets/js/lib.js');
+    ], 'public/assets/js/lib.js')
+    .scripts([
+        'resources/assets/js/modal-form.js'
+    ], 'public/assets/js/modal-form.js');

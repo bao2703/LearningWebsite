@@ -25,7 +25,7 @@ class ProjectRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:projects,name',
-	        'title' => 'required|unique:projects,title',
+	        'title' => 'required',
         ];
     }
 }
