@@ -23,11 +23,15 @@
 							<!-- carousel-inner -->
 							<div class="carousel-inner" role="listbox">
 								@foreach($lesson->slides as $slide)
-									<div class="item">
+									<div class="item" id="slide-{{ $slide->id }}">
 										<img src="{{ asset($slide->image) }}" class="img-responsive">
 										<div class="col-xs-12" id="task-content">
 											<div class="text-center">
-												<h1 style="color: white">CHECKPOINT</h1>
+												<h1 style="color: white">
+													@if($slide->task)
+														{{ $slide->task->description }}
+													@endif
+												</h1>
 											</div>
 										</div>
 									</div>
@@ -37,7 +41,7 @@
 						</div>
 					</div>
 				</div>
-				<form id="" class="editor-form">
+				<form action="" method="POST" class="editor-form">
 					<div class="panel panel-success">
 						<div class="panel-heading clearfix">
 							<h6 class="panel-title pull-left" style="padding-top: 7.5px;">

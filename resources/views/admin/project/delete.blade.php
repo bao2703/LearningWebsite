@@ -1,7 +1,7 @@
 @include('shared.modal.header', ['title' => 'Delete Project'])
 <form action="{{ route('admin.project.destroy', $project) }}" method="post" class="modal-form">
 	{{ csrf_field() }}
-	<input type="hidden" name="_method" value="DELETE">
+	{{ method_field('DELETE') }}
 	<div class="modal-body form-horizontal">
 		<div class="row">
 			<div class="col-sm-offset-1 col-sm-10">

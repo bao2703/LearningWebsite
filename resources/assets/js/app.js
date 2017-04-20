@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -20,20 +19,34 @@ require('./bootstrap');
 // });
 
 $(document).ready(function() {
-    $(".carousel-inner").find(".item:first").addClass("active");
+	$(".carousel-inner").find(".item:first").addClass("active");
 
-    $(".editor-form").submit(function (e) {
-        e.preventDefault();
-        var input = $('#user-input').val();
-        var result = $('#result-content');
-        result.ready(function () {
-            result.contents().find("body").html(input);
-        });
-    });
+	$(".editor-form").submit(function(e) {
+		e.preventDefault();
+		var input = $('#user-input').val();
+		var result = $('#result-content');
+		result.ready(function() {
+			result.contents().find("body").html(input);
+		});
+
+		$.ajax({
+			type: this.method,
+			url: this.action,
+			data: {id: 1},
+			success: function(data) {
+				alert();
+			},
+			error: function(data) {
+
+			}
+		});
+	});
 });
 
 $(document).ready(function() {
-	$(".action-modal").on("show.bs.modal", function() {}).on("hidden.bs.modal", function() {
-	    $(this).removeData("bs.modal");
+	$(".action-modal").on("show.bs.modal", function() {
+	}).on("hidden.bs.modal", function() {
+		$(this).removeData("bs.modal");
+		$('.modal-content').empty();
 	});
 });

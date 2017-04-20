@@ -3,6 +3,7 @@
 use App\Lesson;
 use App\Project;
 use App\Slide;
+use App\Task;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -35,5 +36,11 @@ class DatabaseSeeder extends Seeder
 				'lesson_id' => '1'
 			]);
 		}
+
+		Task::create([
+			'description' => 'CHECKPOINT 1',
+			'solution' => '<h1>Hello</h1>',
+			'slide_id' => '1'
+		]);
 	}
 }

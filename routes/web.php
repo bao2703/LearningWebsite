@@ -17,6 +17,8 @@ Route::name('project.index')->get('/project', 'ProjectController@index');
 
 Route::name('lesson.show')->get('/lesson/{lesson}/show', 'LessonController@show');
 
+Route::name('task.check')->get('/task/{id}/slide', 'TaskController@check');
+
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function() {
 	Route::resource('project', ProjectController::class);
 	Route::name('project.delete')->get('/project/{project}/delete', 'ProjectController@delete');

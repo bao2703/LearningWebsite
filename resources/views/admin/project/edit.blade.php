@@ -1,7 +1,7 @@
 @include('shared.modal.header', ['title' => 'Edit Project'])
 <form action="{{ route('admin.project.update', $project->id) }}" method="post" class="modal-form">
 	{{ csrf_field() }}
-	<input type="hidden" name="_method" value="PUT">
+	{{ method_field('PUT') }}
 	<div class="modal-body form-horizontal">
 		<div class="row">
 			<div class="col-sm-offset-1 col-sm-10">
