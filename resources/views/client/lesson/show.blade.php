@@ -23,7 +23,7 @@
 							<!-- carousel-inner -->
 							<div class="carousel-inner" role="listbox">
 								@foreach($lesson->slides as $slide)
-									<div class="item" id="slide-{{ $slide->id }}">
+									<div class="item" data-id="{{ $slide->id }}">
 										<img src="{{ asset($slide->image) }}" class="img-responsive">
 										<div class="col-xs-12" id="task-content">
 											<div class="text-center">
@@ -77,4 +77,32 @@
 			</div>
 		</div>
 	</div>
+
+
+	<script>
+		$(".editor-form").submit(function(e) {
+			e.preventDefault();
+			var input = $('#user-input').val();
+			var result = $('#result-content');
+			result.ready(function() {
+				result.contents().find("body").html(input);
+			});
+			var currSlideId = $('.carousel-inner').find('.active').data("id");
+			$.ajax({
+				url: '{{ route('task.check') }}',
+				type: "POST",
+				data: {
+					id: currSlideId,
+					input: input
+				},
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				},
+				success: function(data) {
+					if (data.status === true)
+						alert('true');
+				}
+			});
+		});
+	</script>
 @endsection

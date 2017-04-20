@@ -20,27 +20,6 @@ require('./bootstrap');
 
 $(document).ready(function() {
 	$(".carousel-inner").find(".item:first").addClass("active");
-
-	$(".editor-form").submit(function(e) {
-		e.preventDefault();
-		var input = $('#user-input').val();
-		var result = $('#result-content');
-		result.ready(function() {
-			result.contents().find("body").html(input);
-		});
-
-		$.ajax({
-			type: this.method,
-			url: this.action,
-			data: {id: 1},
-			success: function(data) {
-				alert();
-			},
-			error: function(data) {
-
-			}
-		});
-	});
 });
 
 $(document).ready(function() {
