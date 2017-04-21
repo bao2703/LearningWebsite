@@ -1,4 +1,4 @@
-@extends('admin.shared.layout')
+@extends('client.shared.layout')
 
 @section('content')
 	<form action="{{ route('postLogin') }}" method="post">
