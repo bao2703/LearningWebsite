@@ -4,6 +4,7 @@ use App\Lesson;
 use App\Project;
 use App\Slide;
 use App\Task;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -41,6 +42,12 @@ class DatabaseSeeder extends Seeder
 			'description' => 'CHECKPOINT 1',
 			'solution' => '<h1>Hello</h1>',
 			'slide_id' => '1'
+		]);
+
+		User::create([
+			'name' => 'Neptune',
+			'email' => 'bao2703@gmail.com',
+			'password' => Hash::make('bao2703@gmail.com')
 		]);
 	}
 }
