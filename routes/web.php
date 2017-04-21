@@ -32,4 +32,7 @@ Route::prefix('')->namespace('Auth')->group(function() {
 	Route::name('postLogin')->post('/login', 'LoginController@postLogin');
 	Route::name('register')->get('/register', 'LoginController@getLogin');
 	Route::name('logout')->post('/logout', 'LoginController@getLogin');
+
+	Route::name('provider')->get('{provider}', 'LoginController@redirectToProvider');
+	Route::name('provider-call-back')->get('{provider}/callback', 'LoginController@handleProviderCallback');
 });
