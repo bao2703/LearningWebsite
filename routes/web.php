@@ -13,7 +13,7 @@
 
 Route::name('home')->get('/', 'HomeController@index');
 
-Route::prefix('')->middleware('auth:web')->group(function() {
+Route::prefix('')->middleware('auth')->group(function() {
 	Route::name('project.index')->get('/project', 'ProjectController@index');
 
 	Route::name('lesson.show')->get('/lesson/{lesson}/show', 'LessonController@show');
@@ -21,7 +21,7 @@ Route::prefix('')->middleware('auth:web')->group(function() {
 	Route::name('task.check')->post('/task/check', 'TaskController@check');
 });
 
-Route::name('admin.')->prefix('admin')->namespace('Admin')->middleware('auth:admin')->group(function() {
+Route::name('admin.')->prefix('admin')->namespace('Admin')->middleware('admin')->group(function() {
 	Route::resource('project', ProjectController::class);
 	Route::name('project.delete')->get('/project/{project}/delete', 'ProjectController@delete');
 	Route::name('lesson.index')->get('/lesson/{id}/project', 'LessonController@index');
@@ -32,7 +32,4 @@ Route::prefix('')->namespace('Auth')->group(function() {
 	Route::name('postLogin')->post('/login', 'LoginController@postLogin');
 	Route::name('register')->get('/register', 'LoginController@getLogin');
 	Route::name('logout')->post('/logout', 'LoginController@getLogin');
-
-	Route::name('provider')->get('{provider}', 'LoginController@redirectToProvider');
-	Route::name('provider-call-back')->get('{provider}/callback', 'LoginController@handleProviderCallback');
 });

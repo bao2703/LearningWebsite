@@ -8,26 +8,26 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+	/**
+	 * Where to redirect users after login.
+	 *
+	 * @var string
+	 */
+	protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest:web', ['except' => 'logout']);
-    }
+	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		$this->middleware('guest', ['except' => 'logout']);
+	}
 
 	public function getLogin()
 	{
-		return view('client.auth.login');
+		return view('auth.login');
 	}
 
 	public function postLogin(Request $request)
@@ -38,8 +38,11 @@ class LoginController extends Controller
 		]);
 		$credentials = ['email' => $request->email, 'password' => $request->password];
 		// TODO: check role here
-		if (Auth::guard('web')->attempt($credentials, false)) {
-			return redirect()->intended(route('project.index'));
+		if (Auth::attempt($credentials, false)) {
+			if (Auth::user()->isAdmin)
+				return redirect()->intended(route('admin.project.index'));
+			else
+				return redirect()->intended(route('project.index'));
 		}
 
 		return redirect()->back();

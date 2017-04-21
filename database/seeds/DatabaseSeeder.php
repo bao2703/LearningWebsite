@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
 
 		for ($i = 1; $i <= 29; $i++) {
 			Slide::create([
-				'image' => 'assets/images/project-1/lesson-1/slide-'.$i.'.jpg',
+				'image' => 'assets/images/project-1/lesson-1/slide-' . $i . '.jpg',
 				'sort_order' => $i,
 				'lesson_id' => '1'
 			]);
@@ -47,7 +47,15 @@ class DatabaseSeeder extends Seeder
 		User::create([
 			'name' => 'Neptune',
 			'email' => 'bao2703@gmail.com',
+			'isAdmin' => true,
 			'password' => Hash::make('bao2703@gmail.com')
+		]);
+
+		User::create([
+			'name' => 'Neptune2',
+			'email' => 'bao2703@gmail.com2',
+			'isAdmin' => false,
+			'password' => Hash::make('bao2703@gmail.com2')
 		]);
 	}
 }

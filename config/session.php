@@ -148,7 +148,7 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN', 'neptune.app'),
+    'domain' => env('SESSION_DOMAIN', null),
 
     /*
     |--------------------------------------------------------------------------
