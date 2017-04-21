@@ -25,12 +25,12 @@ class LoginController extends Controller
 		$this->middleware('guest', ['except' => 'logout']);
 	}
 
-	public function getLogin()
+	public function showLoginForm()
 	{
 		return view('auth.login');
 	}
 
-	public function postLogin(Request $request)
+	public function login(Request $request)
 	{
 		$this->validate($request, [
 			'email' => 'required|email',
@@ -46,5 +46,11 @@ class LoginController extends Controller
 		}
 
 		return redirect()->back();
+	}
+
+	public function logout()
+	{
+		Auth::logout();
+		return redirect()->route('home');
 	}
 }

@@ -23,7 +23,7 @@ class AdminMiddleware
 					return $next($request);
 					break;
 				default:
-					return redirect(route('project.index'));
+					return redirect(route('home'));
 					break;
 			}
 		}

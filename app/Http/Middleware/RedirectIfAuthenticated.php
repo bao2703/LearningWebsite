@@ -21,10 +21,10 @@ class RedirectIfAuthenticated
 			$user = Auth::user();
 			switch ($user->isAdmin) {
 				case true:
-					return redirect(route('admin.project.index'));
+					return redirect(route('admin.home'));
 					break;
 				default:
-					return redirect(route('project.index'));
+					return redirect(route('home'));
 					break;
 			}
 		}

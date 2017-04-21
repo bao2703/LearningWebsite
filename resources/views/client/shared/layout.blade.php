@@ -37,7 +37,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Neptune</a>
+			<a class="navbar-brand" href="{{ route('home') }}">Neptune</a>
 		</div>
 		<div id="navbar-collapse" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">

@@ -22,14 +22,10 @@ Route::prefix('')->middleware('auth')->group(function() {
 });
 
 Route::name('admin.')->prefix('admin')->namespace('Admin')->middleware('admin')->group(function() {
+	Route::name('home')->get('/', 'HomeController@index');
 	Route::resource('project', ProjectController::class);
 	Route::name('project.delete')->get('/project/{project}/delete', 'ProjectController@delete');
 	Route::name('lesson.index')->get('/lesson/{id}/project', 'LessonController@index');
 });
 
-Route::prefix('')->namespace('Auth')->group(function() {
-	Route::name('login')->get('/login', 'LoginController@getLogin');
-	Route::name('postLogin')->post('/login', 'LoginController@postLogin');
-	Route::name('register')->get('/register', 'LoginController@getLogin');
-	Route::name('logout')->post('/logout', 'LoginController@getLogin');
-});
+Auth::routes();
