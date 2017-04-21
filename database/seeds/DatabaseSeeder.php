@@ -6,6 +6,7 @@ use App\Slide;
 use App\Task;
 use App\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
