@@ -25,14 +25,16 @@
 								@foreach($lesson->slides as $slide)
 									<div class="item" data-id="{{ $slide->id }}">
 										<img src="{{ asset($slide->image) }}" class="img-responsive">
-										<div class="col-xs-12" id="task-content">
-											<div class="text-center">
-												<h1 style="color: white">
-													@if($slide->task)
-														{{ $slide->task->description }}
-													@endif
-												</h1>
+										<div class="col-xs-12 text-center" id="task-content">
+											@if($slide->task)
+											<div class="" style="color: white">
+												<h1>CHECKPOINT</h1>
+												<h3 class="col-sm-offset-1 col-sm-10">
+													<i class="fa fa-close"></i>
+													{{ $slide->task->description }}
+												</h3>
 											</div>
+											@endif
 										</div>
 									</div>
 								@endforeach

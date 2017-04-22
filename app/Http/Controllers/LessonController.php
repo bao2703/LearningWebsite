@@ -16,7 +16,6 @@ class LessonController extends Controller
 			$current_process = $user_lesson->pivot->current_process;
 		} else {
 			$current_process = $lesson->content;
-			$user->lessons()->attach($lesson->id, ['current_process' => $current_process]);
 		}
 
 		return view('client.lesson.show')->with([

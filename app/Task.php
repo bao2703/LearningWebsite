@@ -27,4 +27,10 @@ class Task extends Model
 	{
 		return $this->belongsTo('App\Slide');
 	}
+
+	public function users()
+	{
+		return $this->belongsToMany('App\User')
+			->withTimestamps();
+	}
 }

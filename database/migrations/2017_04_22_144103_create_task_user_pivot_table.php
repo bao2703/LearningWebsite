@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLessonUserPivotTable extends Migration
+class CreateTaskUserPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateLessonUserPivotTable extends Migration
      */
     public function up()
     {
-	    Schema::create('lesson_user', function (Blueprint $table) {
-		    $table->primary(['lesson_id', 'user_id']);
-		    $table->integer('lesson_id')->unsigned();
-		    $table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
+	    Schema::create('task_user', function (Blueprint $table) {
+		    $table->primary(['task_id', 'user_id']);
+		    $table->integer('task_id')->unsigned();
+		    $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
 		    $table->integer('user_id')->unsigned();
 		    $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-		    $table->longText('current_process')->nullable();
 		    $table->timestamps();
 	    });
     }
@@ -31,6 +30,6 @@ class CreateLessonUserPivotTable extends Migration
      */
     public function down()
     {
-	    Schema::dropIfExists('lesson_user');
+	    Schema::dropIfExists('task_user');
     }
 }

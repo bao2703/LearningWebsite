@@ -33,4 +33,10 @@ class User extends Authenticatable
 		    ->withPivot('current_process')
 		    ->withTimestamps();
     }
+
+	public function tasks()
+	{
+		return $this->belongsToMany('App\Task')
+			->withTimestamps();
+	}
 }
