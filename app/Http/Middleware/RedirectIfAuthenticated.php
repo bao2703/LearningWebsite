@@ -19,14 +19,10 @@ class RedirectIfAuthenticated
 	{
 		if (Auth::check()) {
 			$user = Auth::user();
-			switch ($user->isAdmin) {
-				case true:
-					return redirect(route('admin.home'));
-					break;
-				default:
-					return redirect(route('home'));
-					break;
+			if ($user->isAdmin) {
+				return redirect(route('admin.home'));
 			}
+			return redirect(route('home'));
 		}
 		return $next($request);
 	}

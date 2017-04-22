@@ -12,8 +12,9 @@ class TaskController extends Controller
 		$response = [
 			'status' => false
 		];
-		$slide = Slide::find($request->id);
-		if (str_contains(strtolower($slide->task->solution), strtolower($request->input))) {
+		$task = Slide::find($request->id)->task()->where('solution', 'like', $request->input)->count();
+
+		if ($task == 1) {
 			$response = [
 				'status' => true
 			];

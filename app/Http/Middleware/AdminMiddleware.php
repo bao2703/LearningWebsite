@@ -18,14 +18,10 @@ class AdminMiddleware
 	{
 		if (Auth::check()) {
 			$user = Auth::user();
-			switch ($user->isAdmin) {
-				case true:
-					return $next($request);
-					break;
-				default:
-					return redirect(route('home'));
-					break;
+			if ($user->isAdmin) {
+				return $next($request);
 			}
+			return redirect(route('home'));
 		}
 		return redirect()->route('login');
 	}
