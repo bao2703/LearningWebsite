@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Lesson;
 use App\Slide;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -12,12 +14,20 @@ class TaskController extends Controller
 		$response = [
 			'status' => false
 		];
-		$task = Slide::find($request->id)->task()->where('solution', 'like', $request->input)->count();
+		$lesson = Lesson::find($request->lesson_id);
+		$userInput = $request->user_process;
+		$user = Auth::user();
+		$user->lessons()->detach($lesson->id);
+		$user->lessons()->attach($lesson->id, ['current_process' => $userInput]);
 
-		if ($task == 1) {
-			$response = [
-				'status' => true
-			];
+		$slide = Slide::find($request->slide_id);
+		if ($slide->task) {
+			$solution = $slide->task->solution;
+			if (str_contains(strtolower($solution), strtolower($userInput))) {
+				$response = [
+					'status' => true
+				];
+			}
 		}
 		return response()->json($response, 200);
 	}

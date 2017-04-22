@@ -55,7 +55,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-								<textarea class="form-control vresize" rows="7" id="user-input"></textarea>
+								<textarea class="form-control vresize" rows="7" id="user-input">{{ session('current_process') ? session('current_process') : '' }}</textarea>
 							</div>
 						</div>
 					</div>
@@ -82,18 +82,19 @@
 	<script>
 		$(".editor-form").submit(function(e) {
 			e.preventDefault();
-			var input = $('#user-input').val();
+			var userProcess = $('#user-input').val();
 			var result = $('#result-content');
 			result.ready(function() {
-				result.contents().find("body").html(input);
+				result.contents().find("body").html(userProcess);
 			});
 			var currSlideId = $('.carousel-inner').find('.active').data("id");
 			$.ajax({
 				url: '{{ route('task.check') }}',
 				type: "POST",
 				data: {
-					id: currSlideId,
-					input: input
+					lesson_id: '{{ $lesson->id }}',
+					slide_id: currSlideId,
+					user_process: userProcess
 				},
 				headers: {
 					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

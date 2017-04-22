@@ -32,4 +32,11 @@ class Lesson extends Model
 	{
 		return $this->hasMany('App\Slide');
 	}
+
+	public function users()
+	{
+		return $this->belongsToMany('App\User')
+			->withPivot('current_process')
+			->withTimestamps();
+	}
 }
