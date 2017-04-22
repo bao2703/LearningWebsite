@@ -4,16 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Lesson;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
 class LessonController extends Controller
 {
 	public function show(Lesson $lesson)
 	{
-		$user_lesson = Auth::user()->lessons->where('id', $lesson->id)->first();
+		$user = Auth::user();
+		$user_lesson = $lesson->users->where('id', $user->id)->first();
+
 		if ($user_lesson) {
-			Session::flash('current_process', $user_lesson->pivot->current_process);
+			$current_process = $user_lesson->pivot->current_process;
+		} else {
+			$current_process = $lesson->content;
+			$user->lessons()->attach($lesson->id, ['current_process' => $current_process]);
 		}
-		return view('client.lesson.show')->with('lesson', $lesson);
+
+		return view('client.lesson.show')->with([
+			'lesson' => $lesson,
+			'current_process' => $current_process
+		]);
 	}
 }

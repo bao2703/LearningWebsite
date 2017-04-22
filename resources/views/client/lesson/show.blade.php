@@ -55,7 +55,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-								<textarea class="form-control vresize" rows="7" id="user-input">{{ session('current_process') ? session('current_process') : '' }}</textarea>
+								<textarea class="form-control vresize" rows="7" id="user-input">{{ $current_process }}</textarea>
 							</div>
 						</div>
 					</div>

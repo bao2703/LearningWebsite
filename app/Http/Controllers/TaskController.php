@@ -15,15 +15,14 @@ class TaskController extends Controller
 			'status' => false
 		];
 		$lesson = Lesson::find($request->lesson_id);
-		$userInput = $request->user_process;
+		$user_process = $request->user_process;
 		$user = Auth::user();
-		$user->lessons()->detach($lesson->id);
-		$user->lessons()->attach($lesson->id, ['current_process' => $userInput]);
+		$user->lessons()->updateExistingPivot($lesson->id, ['current_process' => $user_process]);
 
 		$slide = Slide::find($request->slide_id);
 		if ($slide->task) {
 			$solution = $slide->task->solution;
-			if (str_contains(strtolower($solution), strtolower($userInput))) {
+			if (str_contains(strtolower($solution), strtolower($user_process))) {
 				$response = [
 					'status' => true
 				];
