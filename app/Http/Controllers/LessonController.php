@@ -11,7 +11,7 @@ class LessonController extends Controller
 	{
 		$user = Auth::user();
 		$user_lesson = $lesson->users->where('id', $user->id)->first();
-
+		$success_task = $user->tasks()->get();
 		if ($user_lesson) {
 			$user_process = $user_lesson->pivot->user_process;
 		} else {
@@ -20,7 +20,8 @@ class LessonController extends Controller
 
 		return view('client.lesson.show')->with([
 			'lesson' => $lesson,
-			'user_process' => $user_process
+			'user_process' => $user_process,
+			'success_task' => $success_task
 		]);
 	}
 }

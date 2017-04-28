@@ -27,13 +27,17 @@
 										<img src="{{ asset($slide->image) }}" class="img-responsive">
 										<div class="col-xs-12 text-center" id="task-content">
 											@if($slide->task)
-											<div class="" style="color: white">
-												<h1>CHECKPOINT</h1>
-												<h3 class="col-sm-offset-1 col-sm-10">
-													<i class="fa fa-close"></i>
-													{{ $slide->task->description }}
-												</h3>
-											</div>
+												<div id="task-{{ $slide->task->id }}" style="color: white">
+													<h1>CHECKPOINT</h1>
+													<h3 class="col-sm-offset-1 col-sm-10">
+														@if (false)
+															<i class="fa fa-check"></i>
+														@else
+															<i class="fa fa-close"></i>
+														@endif
+														{{ $slide->task->description }}
+													</h3>
+												</div>
 											@endif
 										</div>
 									</div>
@@ -57,7 +61,8 @@
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-								<textarea class="form-control vresize" rows="7" id="user-input">{{ $user_process }}</textarea>
+								<textarea class="form-control vresize" rows="7"
+								          id="user-input">{{ $user_process }}</textarea>
 							</div>
 						</div>
 					</div>
@@ -101,9 +106,13 @@
 				headers: {
 					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 				},
-				success: function(data) {
-					if (data.status === true)
-						alert('true');
+				success: function(response) {
+					var successTask = response.success_task;
+					console.log(response);
+					successTask.forEach(function(item) {
+						//console.log(item);
+						$('#task-' + item).html("")
+					});
 				}
 			});
 		});

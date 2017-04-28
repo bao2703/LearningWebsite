@@ -46,18 +46,24 @@ class DatabaseSeeder extends Seeder
 			'slide_id' => '1'
 		]);
 
+		Task::create([
+			'description' => 'CHECKPOINT 2',
+			'solution' => '<h1>Hello2</h1>',
+			'slide_id' => '2'
+		]);
+
 		User::create([
 			'name' => 'Neptune',
 			'email' => 'bao2703@gmail.com',
 			'isAdmin' => true,
-			'password' => Hash::make('bao2703@gmail.com')
+			'password' => bcrypt('1')
 		]);
 
 		User::create([
 			'name' => 'Neptune2',
 			'email' => 'bao2703@gmail.com2',
 			'isAdmin' => false,
-			'password' => Hash::make('bao2703@gmail.com2')
+			'password' => bcrypt('1')
 		]);
 	}
 }
