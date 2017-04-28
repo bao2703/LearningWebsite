@@ -62,7 +62,7 @@
 						<div class="panel-body">
 							<div class="form-group">
 								<textarea class="form-control vresize" rows="7"
-								          id="user-input">{{ $user_process }}</textarea>
+								          id="user-input">{{ $user_process }} {{$success_task}}</textarea>
 							</div>
 						</div>
 					</div>
@@ -108,7 +108,6 @@
 				},
 				success: function(response) {
 					var successTask = response.success_task;
-					console.log(response);
 					successTask.forEach(function(item) {
 						//console.log(item);
 						$('#task-' + item).html("")

@@ -48,8 +48,14 @@ class DatabaseSeeder extends Seeder
 
 		Task::create([
 			'description' => 'CHECKPOINT 2',
-			'solution' => '<h1>Hello2</h1>',
+			'solution' => '<h1>Hello</h1>',
 			'slide_id' => '2'
+		]);
+
+		Task::create([
+			'description' => 'CHECKPOINT 3',
+			'solution' => '<h1>Hello3</h1>',
+			'slide_id' => '3'
 		]);
 
 		User::create([

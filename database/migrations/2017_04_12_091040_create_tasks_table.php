@@ -18,7 +18,7 @@ class CreateTasksTable extends Migration
 			$table->string('description');
 			$table->string('solution');
 			$table->integer('slide_id')->unsigned();
-			$table->foreign('slide_id')->references('id')->on('lessons')->onDelete('cascade');
+			$table->foreign('slide_id')->references('id')->on('slides')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}

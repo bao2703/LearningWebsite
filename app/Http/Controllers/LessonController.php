@@ -11,7 +11,7 @@ class LessonController extends Controller
 	{
 		$user = Auth::user();
 		$user_lesson = $lesson->users->where('id', $user->id)->first();
-		$success_task = $user->tasks()->get();
+		$success_task = $user->tasks()->where('slide_id', '1')->get();
 		if ($user_lesson) {
 			$user_process = $user_lesson->pivot->user_process;
 		} else {

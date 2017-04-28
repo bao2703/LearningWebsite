@@ -12,7 +12,7 @@ class Task extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		'description', 'solution', 'slide_id'
+		'description', 'solution'
 	];
 
 	/**
@@ -23,7 +23,7 @@ class Task extends Model
 	protected $hidden = [
 	];
 
-	public function lesson()
+	public function slide()
 	{
 		return $this->belongsTo('App\Slide');
 	}
