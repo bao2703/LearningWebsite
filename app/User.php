@@ -30,7 +30,7 @@ class User extends Authenticatable
     public function lessons()
     {
     	return $this->belongsToMany('App\Lesson')
-		    ->withPivot('current_process')
+		    ->withPivot('user_process')
 		    ->withTimestamps();
     }
 

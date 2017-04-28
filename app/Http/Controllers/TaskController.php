@@ -16,14 +16,16 @@ class TaskController extends Controller
 		$user_process = $request->user_process;
 		$user = Auth::user();
 
-		$user->lessons()->syncWithoutDetaching([$lesson->id, ['current_process' => $user_process]]);
+		$user->lessons()->detach($lesson->id);
+		$user->lessons()->attach($lesson->id, ['user_process' => $user_process]);
 
 		$slide = Slide::find($request->slide_id);
 		if ($slide->task) {
 			$solution = $slide->task->solution;
 			if (str_contains(strtolower($solution), strtolower($user_process))) {
 				$response = ['status' => true];
-				$user->tasks()->syncWithoutDetaching([$slide->task->id]);
+				$user->tasks()->detach($slide->task->id);
+				$user->tasks()->attach($slide->task->id);
 			}
 		}
 		return response()->json($response, 200);

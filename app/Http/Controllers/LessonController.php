@@ -13,14 +13,14 @@ class LessonController extends Controller
 		$user_lesson = $lesson->users->where('id', $user->id)->first();
 
 		if ($user_lesson) {
-			$current_process = $user_lesson->pivot->current_process;
+			$user_process = $user_lesson->pivot->user_process;
 		} else {
-			$current_process = $lesson->content;
+			$user_process = $lesson->content;
 		}
 
 		return view('client.lesson.show')->with([
 			'lesson' => $lesson,
-			'current_process' => $current_process
+			'user_process' => $user_process
 		]);
 	}
 }
