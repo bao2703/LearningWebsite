@@ -12,18 +12,16 @@ class TaskController extends Controller
 	{
 		$user = Auth::user();
 		$lesson = Lesson::find($request->lesson_id);
-		$user_process = $request->user_process;
+		$user_progress = $request->user_progress;
 
-		$user->lessons()->detach($lesson->id);
-		$user->lessons()->attach($lesson->id, ['user_process' => $user_process]);
+		$user->lessons()->syncWithoutDetaching([$lesson->id => ['user_progress' => $user_progress]]);
 
 		$success_task = array();
 		foreach ($lesson->slides as $slide) {
 			if ($slide->task) {
 				$solution = $slide->task->solution;
-				if (str_contains(strtolower($solution), strtolower($user_process))) {
-					$user->tasks()->detach($slide->task->id);
-					$user->tasks()->attach($slide->task->id);
+				if (str_contains(strtolower($user_progress), strtolower($solution))) {
+					$user->tasks()->syncWithoutDetaching([$slide->task->id]);
 					$success_task[] = $slide->task->id;
 				}
 			}

@@ -40,22 +40,24 @@ class DatabaseSeeder extends Seeder
 			]);
 		}
 
+		for ($i = 1; $i <= 10; $i++) {
+			Task::create([
+				'description' => 'Task '.$i.' write this shit: <h1>Hello'.$i.'</h1>',
+				'solution' => '<h1>Hello'.$i.'</h1>',
+				'slide_id' => $i
+			]);
+		}
+
 		Task::create([
-			'description' => 'CHECKPOINT 1',
-			'solution' => '<h1>Hello</h1>',
-			'slide_id' => '1'
+			'description' => 'Write this in the editor below: <h1>Anna Dowlin</h1>',
+			'solution' => '<h1>Anna Dowlin</h1>',
+			'slide_id' => 12
 		]);
 
 		Task::create([
-			'description' => 'CHECKPOINT 2',
-			'solution' => '<h1>Hello</h1>',
-			'slide_id' => '2'
-		]);
-
-		Task::create([
-			'description' => 'CHECKPOINT 3',
-			'solution' => '<h1>Hello3</h1>',
-			'slide_id' => '3'
+			'description' => 'Write "Hi! I\'m Anna Dowlin, a NYC-based marketer. Say hello!" between an opening and a closing paragraph tag',
+			'solution' => '<p>Hi! I;m Anna Dowlin, a NYC-based marketer</p>',
+			'slide_id' => 12
 		]);
 
 		User::create([

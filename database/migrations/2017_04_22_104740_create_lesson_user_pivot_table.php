@@ -19,7 +19,7 @@ class CreateLessonUserPivotTable extends Migration
 		    $table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
 		    $table->integer('user_id')->unsigned();
 		    $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-		    $table->longText('user_process')->nullable();
+		    $table->longText('user_progress')->nullable();
 		    $table->timestamps();
 	    });
     }

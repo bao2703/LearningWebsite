@@ -27,16 +27,16 @@
 										<img src="{{ asset($slide->image) }}" class="img-responsive">
 										<div class="col-xs-12 text-center" id="task-content">
 											@if($slide->task)
-												<div id="task-{{ $slide->task->id }}" style="color: white">
+												<div id="task-{{ $slide->task->id }}" style="color: black">
 													<h1>CHECKPOINT</h1>
-													<h3 class="col-sm-offset-1 col-sm-10">
+													<div class="col-sm-offset-1 col-sm-10">
 														@if($user->tasks->contains($slide->task->id))
-															<i class="fa fa-check"></i>
+															<i class="fa fa-check fa-2x" style="color: green;"></i>
 														@else
-															<i class="fa fa-close"></i>
+															<i class="fa fa-close fa-2x" style="color: red"></i>
 														@endif
 														{{ $slide->task->description }}
-													</h3>
+													</div>
 												</div>
 											@endif
 										</div>
@@ -62,7 +62,7 @@
 						<div class="panel-body">
 							<div class="form-group">
 								<textarea class="form-control vresize" rows="7"
-								          id="user-input">{{ $user_process }}</textarea>
+								          id="user-input">{{ $user_progress }}</textarea>
 							</div>
 						</div>
 					</div>
@@ -89,10 +89,10 @@
 	<script>
 		$(".editor-form").submit(function(e) {
 			e.preventDefault();
-			var userProcess = $('#user-input').val();
+			var userProgress = $('#user-input').val();
 			var result = $('#result-container');
 			result.ready(function() {
-				result.contents().find("body").html(userProcess);
+				result.contents().find("body").html(userProgress);
 			});
 
 			$.ajax({
@@ -100,7 +100,7 @@
 				type: "POST",
 				data: {
 					lesson_id: '{{ $lesson->id }}',
-					user_process: userProcess
+					user_progress: userProgress
 				},
 				headers: {
 					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -108,10 +108,8 @@
 				success: function(response) {
 					var successTask = response.success_task;
 					successTask.forEach(function(item) {
-						//console.log(item);
-						var icon = $('#task-' + item).find('h3').find('i');
-						icon.removeClass('fa-close');
-						icon.addClass('fa-check');
+						var icon = $('#task-' + item).find('div').find('i');
+						icon.removeClass('fa-close').addClass('fa-check').css("color", "green");
 					});
 				}
 			});
