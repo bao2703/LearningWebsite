@@ -30,7 +30,7 @@
 												<div id="task-{{ $slide->task->id }}" style="color: white">
 													<h1>CHECKPOINT</h1>
 													<h3 class="col-sm-offset-1 col-sm-10">
-														@if (false)
+														@if($user->tasks->contains($slide->task->id))
 															<i class="fa fa-check"></i>
 														@else
 															<i class="fa fa-close"></i>
@@ -62,7 +62,7 @@
 						<div class="panel-body">
 							<div class="form-group">
 								<textarea class="form-control vresize" rows="7"
-								          id="user-input">{{ $user_process }} {{$success_task}}</textarea>
+								          id="user-input">{{ $user_process }}</textarea>
 							</div>
 						</div>
 					</div>
@@ -77,7 +77,7 @@
 					</div>
 					<div class="panel-body">
 						<div class="embed-responsive embed-responsive-4by3">
-							<iframe id="result-content" class="embed-responsive-item"></iframe>
+							<iframe id="result-container" class="embed-responsive-item"></iframe>
 						</div>
 					</div>
 				</div>
@@ -90,17 +90,16 @@
 		$(".editor-form").submit(function(e) {
 			e.preventDefault();
 			var userProcess = $('#user-input').val();
-			var result = $('#result-content');
+			var result = $('#result-container');
 			result.ready(function() {
 				result.contents().find("body").html(userProcess);
 			});
-			var currSlideId = $('.carousel-inner').find('.active').data("id");
+
 			$.ajax({
 				url: '{{ route('task.check') }}',
 				type: "POST",
 				data: {
 					lesson_id: '{{ $lesson->id }}',
-					slide_id: currSlideId,
 					user_process: userProcess
 				},
 				headers: {
@@ -110,7 +109,9 @@
 					var successTask = response.success_task;
 					successTask.forEach(function(item) {
 						//console.log(item);
-						$('#task-' + item).html("")
+						var icon = $('#task-' + item).find('h3').find('i');
+						icon.removeClass('fa-close');
+						icon.addClass('fa-check');
 					});
 				}
 			});

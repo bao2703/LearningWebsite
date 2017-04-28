@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
 			]),
 			new Lesson([
 				'name' => 'Style the background and text',
-				'content' => 'Hello',
+				'content' =>'<h1>Hello</h1>',
 			]),
 		]);
 

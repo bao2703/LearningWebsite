@@ -10,8 +10,8 @@ class LessonController extends Controller
 	public function show(Lesson $lesson)
 	{
 		$user = Auth::user();
-		$user_lesson = $lesson->users->where('id', $user->id)->first();
-		$success_task = $user->tasks()->where('slide_id', '1')->get();
+		$user_lesson = $user->lessons->where('id', $lesson->id)->first();
+
 		if ($user_lesson) {
 			$user_process = $user_lesson->pivot->user_process;
 		} else {
@@ -21,7 +21,7 @@ class LessonController extends Controller
 		return view('client.lesson.show')->with([
 			'lesson' => $lesson,
 			'user_process' => $user_process,
-			'success_task' => $success_task
+			'user' => $user
 		]);
 	}
 }

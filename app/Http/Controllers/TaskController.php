@@ -10,9 +10,9 @@ class TaskController extends Controller
 {
 	public function check(Request $request)
 	{
+		$user = Auth::user();
 		$lesson = Lesson::find($request->lesson_id);
 		$user_process = $request->user_process;
-		$user = Auth::user();
 
 		$user->lessons()->detach($lesson->id);
 		$user->lessons()->attach($lesson->id, ['user_process' => $user_process]);
