@@ -25,7 +25,8 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->middleware('admin')-
 	Route::name('home')->get('/', 'HomeController@index');
 	Route::resource('project', ProjectController::class);
 	Route::name('project.delete')->get('/project/{project}/delete', 'ProjectController@delete');
-	Route::name('lesson.index')->get('/lesson/{id}/project', 'LessonController@index');
+	Route::name('lesson.index')->get('/lesson/{project}/project', 'LessonController@index');
+	Route::name('slide.index')->get('/slide/{lesson}/lesson', 'SlideController@index');
 });
 
 Auth::routes();

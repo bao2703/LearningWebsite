@@ -20,7 +20,11 @@
 				@foreach($lessons as $lesson)
 					<tr>
 						<td>{{ $lesson->id }}</td>
-						<td>{{ $lesson->name }}</td>
+						<td>
+							<a href="{{ route('admin.slide.index', $lesson->id) }}">
+								{{ $lesson->name }}
+							</a>
+						</td>
 						<td>{{ $lesson->title }}</td>
 					</tr>
 				@endforeach

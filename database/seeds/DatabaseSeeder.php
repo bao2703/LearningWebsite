@@ -56,8 +56,8 @@ class DatabaseSeeder extends Seeder
 
 		Task::create([
 			'description' => 'Write "Hi! I\'m Anna Dowlin, a NYC-based marketer. Say hello!" between an opening and a closing paragraph tag',
-			'solution' => '<p>Hi! I;m Anna Dowlin, a NYC-based marketer</p>',
-			'slide_id' => 12
+			'solution' => '<p>Hi! I\'m Anna Dowlin, a NYC-based marketer. Say hello!</p>',
+			'slide_id' => 14
 		]);
 
 		User::create([

@@ -10,7 +10,7 @@ class LessonController extends Controller
 	public function show(Lesson $lesson)
 	{
 		$user = Auth::user();
-		$user_lesson = $user->lessons->where('id', $lesson->id)->first();
+		$user_lesson = $user->lessons()->where('id', $lesson->id)->first();
 
 		if ($user_lesson) {
 			$user_progress = $user_lesson->pivot->user_progress;

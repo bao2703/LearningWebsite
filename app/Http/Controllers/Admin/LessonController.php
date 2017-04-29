@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Lesson;
+use App\Project;
 use Illuminate\Http\Request;
 
 class LessonController extends AdminController
 {
-    public function index($projectId)
+    public function index(Project $project)
     {
-    	$lessons = Lesson::where('project_id', $projectId)->get();
+    	$lessons = $project->lessons;
 	    return view('admin.lesson.index')->with('lessons', $lessons);
     }
 }
