@@ -23,7 +23,7 @@
 							<!-- carousel-inner -->
 							<div class="carousel-inner" role="listbox">
 								@foreach($lesson->slides as $slide)
-									<div class="item" data-id="{{ $slide->id }}">
+									<div class="item" data-id="{{ $slide->id }}" style="min-height: 250px">
 										<img src="{{ asset($slide->image) }}" class="img-responsive">
 										<div class="col-xs-12 text-center" id="task-content">
 											@if($slide->task)
@@ -49,14 +49,9 @@
 				</div>
 				<form action="" method="POST" class="editor-form">
 					<div class="panel panel-success">
-						<div class="panel-heading clearfix">
-							<h6 class="panel-title pull-left" style="padding-top: 7.5px;">
+						<div class="panel-heading">
+							<div class="panel-title">
 								Type your code here
-							</h6>
-							<div class="btn-group pull-right">
-								<button class="btn btn-success btn-sm" type="submit">
-									Run
-								</button>
 							</div>
 						</div>
 						<div class="panel-body">
@@ -96,12 +91,16 @@
 			}]
 		};
 
-		var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		var editor = CodeMirror.fromTextArea($("#code")[0], {
 			mode: mixedMode,
 			lineNumbers: true,
 			tabMode: "indent",
 			theme: "dracula",
 			indentUnit: 2
+		});
+
+		editor.on('change', function(e) {
+			$(".editor-form").submit();
 		});
 
 		$(".editor-form").submit(function(e) {
@@ -130,6 +129,6 @@
 					});
 				}
 			});
-		});
+		}).submit();
 	</script>
 @endsection

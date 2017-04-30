@@ -10,8 +10,10 @@ class SlideController extends Controller
 {
 	public function index(Lesson $lesson)
 	{
-		$slides = $lesson->slides;
-		return view('admin.slide.index')->with('slides', $slides);
+		$slides = $lesson->slides()->paginate(10);
+		return view('admin.slide.index')
+			->with('slides', $slides)
+			->with('lesson', $lesson);
 	}
 
 	public function create(Lesson $lesson)
@@ -28,10 +30,13 @@ class SlideController extends Controller
 				$lesson->slides()->create([
 					'image' => 'storage/' . $path,
 					'sort_order' => $request->sort_order,
+				])->task()->create([
+					'description' => $request->task,
+					'solution' => $request->solution
 				]);
 				return redirect()->route('admin.slide.index', $lesson->id);
 			}
 		}
-		return "";
+		return "Error";
 	}
 }
