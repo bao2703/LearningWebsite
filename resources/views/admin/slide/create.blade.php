@@ -14,7 +14,7 @@
 					<div class="col-sm-offset-1 col-sm-5">
 						<div class="form-group">
 							<label for="image">Image</label>
-							<input type="file" class="form-control" name="image">
+							<input id="file" type="file" class="form-control" name="image">
 						</div>
 					</div>
 					<div class="col-sm-5">
@@ -50,4 +50,10 @@
 			</form>
 		</div>
 	</div>
+
+	<script>
+		$(document).ready(function() {
+			$("#file").fileinput();
+		});
+	</script>
 @endsection
