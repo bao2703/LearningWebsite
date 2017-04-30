@@ -12,4 +12,9 @@ class SlideController extends Controller
     	$slides = $lesson->slides;
     	return view('admin.slide.index')->with('slides', $slides);
     }
+
+	public function create()
+	{
+		return view('admin.slide.create');
+	}
 }

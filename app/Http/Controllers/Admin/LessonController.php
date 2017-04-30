@@ -13,4 +13,9 @@ class LessonController extends AdminController
     	$lessons = $project->lessons;
 	    return view('admin.lesson.index')->with('lessons', $lessons);
     }
+
+	public function create()
+	{
+		return view('admin.lesson.create');
+	}
 }

@@ -19,7 +19,6 @@
 				<thead>
 				<tr>
 					<th>#</th>
-					<th>Id</th>
 					<th>Name</th>
 					<th>Title</th>
 				</tr>
@@ -35,8 +34,11 @@
 								<i class="fa fa-trash"></i>
 							</a>
 						</td>
-						<td>{{ $project->id }}</td>
-						<td>{{ $project->name }}</td>
+						<td>
+							<a href="{{ route('admin.lesson.index', $project->id) }}">
+								{{ $project->name }}
+							</a>
+						</td>
 						<td>{{ $project->title }}</td>
 					</tr>
 				@endforeach

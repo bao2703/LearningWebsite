@@ -24,16 +24,13 @@
 						<td>
 							<img src="{{ asset($slide->image) }}" class="img-responsive" style="max-height: 150px">
 						</td>
-						<td>
-							@if($slide->task)
-								{{ $slide->task->description }}
-							@endif
-						</td>
-						<td>
-							@if($slide->task)
-								{{ $slide->task->solution }}
-							@endif
-						</td>
+						@if($slide->task)
+							<td>{{ $slide->task->description }}</td>
+							<td>{{ $slide->task->solution }}</td>
+						@else
+							<td></td>
+							<td></td>
+						@endif
 					</tr>
 				@endforeach
 				</tbody>
