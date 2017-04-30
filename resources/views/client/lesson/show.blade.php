@@ -61,8 +61,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-								<textarea class="form-control vresize" rows="7"
-								          id="user-input">{{ $user_progress }}</textarea>
+								<textarea id="code">{{ $user_progress }}</textarea>
 							</div>
 						</div>
 					</div>
@@ -85,11 +84,29 @@
 		</div>
 	</div>
 
-
 	<script>
+		var mixedMode = {
+			name: "htmlmixed",
+			scriptTypes: [{
+				matches: /\/x-handlebars-template|\/x-mustache/i,
+				mode: null
+			}, {
+				matches: /(text|application)\/(x-)?vb(a|script)/i,
+				mode: "vbscript"
+			}]
+		};
+
+		var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+			mode: mixedMode,
+			lineNumbers: true,
+			tabMode: "indent",
+			theme: "dracula",
+			indentUnit: 2
+		});
+
 		$(".editor-form").submit(function(e) {
 			e.preventDefault();
-			var userProgress = $('#user-input').val();
+			var userProgress = editor.getValue();
 			var result = $('#result-container');
 			result.ready(function() {
 				result.contents().find("body").html(userProgress);

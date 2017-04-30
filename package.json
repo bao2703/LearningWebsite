@@ -19,6 +19,7 @@
     "vue": "^2.1.10",
     "datatables.net": "^1.10.13",
     "datatables.net-bs": "^1.10.13",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "codemirror": "^5.25.2"
   }
 }

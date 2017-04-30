@@ -18,11 +18,19 @@ mix.js('resources/assets/js/app.js', 'public/assets/js')
 	.copy('vendor/kartik-v/bootstrap-fileinput/img', 'public/assets/img')
     .styles([
         'node_modules/datatables.net-bs/css/dataTables.bootstrap.css',
+	    'node_modules/codemirror/lib/codemirror.css',
+	    'node_modules/codemirror/theme/dracula.css',
 	    'vendor/kartik-v/bootstrap-fileinput/css/fileinput.css'
     ], 'public/assets/css/lib.css')
     .scripts([
         'node_modules/datatables.net/js/jquery.dataTables.js',
         'node_modules/datatables.net-bs/js/dataTables.bootstrap.js',
+	    'node_modules/codemirror/lib/codemirror.js',
+	    'node_modules/codemirror/mode/css/css.js',
+	    'node_modules/codemirror/mode/vbscript/vbscript.js',
+	    'node_modules/codemirror/mode/xml/xml.js',
+	    'node_modules/codemirror/mode/htmlmixed/htmlmixed.js',
+	    'node_modules/codemirror/mode/javascript/javascript.js',
 	    'vendor/kartik-v/bootstrap-fileinput/js/fileinput.js'
     ], 'public/assets/js/lib.js')
     .scripts([
