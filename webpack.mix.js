@@ -24,4 +24,5 @@ mix.js('resources/assets/js/app.js', 'public/assets/js')
     ], 'public/assets/js/lib.js')
     .scripts([
         'resources/assets/js/modal-form.js'
-    ], 'public/assets/js/modal-form.js');
+    ], 'public/assets/js/modal-form.js')
+	.copy('resources/assets/images', 'public/storage/images');

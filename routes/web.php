@@ -26,8 +26,10 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->middleware('admin')-
 	Route::resource('project', ProjectController::class);
 	Route::name('project.delete')->get('/project/{project}/delete', 'ProjectController@delete');
 	Route::name('lesson.index')->get('/lesson/{project}/project', 'LessonController@index');
+
 	Route::name('slide.index')->get('/slide/{lesson}/lesson', 'SlideController@index');
-	Route::resource('slide', SlideController::class, ['except' => ['index']]);
+	Route::name('slide.create')->get('/slide/{lesson}/lesson/create', 'SlideController@create');
+	Route::name('slide.store')->post('/slide/{lesson}/lesson/store', 'SlideController@store');
 });
 
 Auth::routes();

@@ -8,12 +8,13 @@
 			</div>
 		</div>
 		<div class="panel-body">
-			<form action="{{ route('admin.slide.store') }}">
+			<form action="{{ route('admin.slide.store', $lesson->id) }}" method="post" enctype="multipart/form-data">
+				{{ csrf_field() }}
 				<div class="row">
 					<div class="col-sm-offset-1 col-sm-5">
 						<div class="form-group">
 							<label for="image">Image</label>
-							<input type="text" class="form-control" name="image">
+							<input type="file" class="form-control" name="image">
 						</div>
 					</div>
 					<div class="col-sm-5">
