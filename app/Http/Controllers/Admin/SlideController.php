@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Lesson;
+use App\Slide;
 use Illuminate\Http\Request;
+use Illuminate\Support\MessageBag;
 
 class SlideController extends Controller
 {
@@ -27,16 +29,28 @@ class SlideController extends Controller
 			$file = $request->file('image');
 			if ($file->isValid()) {
 				$path = $file->store('images', 'public');
-				$lesson->slides()->create([
+				$slide = $lesson->slides()->create([
 					'image' => 'storage/' . $path,
 					'sort_order' => $request->sort_order,
-				])->task()->create([
-					'description' => $request->task,
-					'solution' => $request->solution
 				]);
+				if ($request->has('has_task')) {
+					$slide->task()->create([
+						'description' => $request->task,
+						'solution' => $request->solution
+					]);
+				}
 				return redirect()->route('admin.slide.index', $lesson->id);
 			}
 		}
-		return "Error";
+		$errors = new MessageBag(['image' => 'Image is required.']);
+
+		return redirect()->back()->with([
+			'errors' => $errors
+		]);
+	}
+
+	public function edit(Slide $slide)
+	{
+		return view('admin.slide.edit')->with('slide', $slide);
 	}
 }

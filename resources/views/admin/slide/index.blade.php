@@ -19,24 +19,27 @@
 					<th>Sort order</th>
 					<th>Image</th>
 					<th>Task</th>
+					<th>Solution</th>
 				</tr>
 				</thead>
 				<tbody>
 				@foreach($slides as $slide)
 					<tr>
 						<td>
-							<button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button>
+							<form action="{{ route('admin.slide.edit', $slide) }}" method="get" style="display: inline">
+								<button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button>
+							</form>
 							<button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-							<button class="btn btn-info btn-sm"><i class="fa fa-tasks"></i></button>
 						</td>
 						<td>{{ $slide->sort_order }}</td>
 						<td>
 							<img src="{{ asset($slide->image) }}" class="img-responsive" style="max-height: 150px">
 						</td>
 						<td>
-							@if($slide->task)
-								{{ $slide->task->description }}
-							@endif
+							{{ $slide->task ? $slide->task->description : ""}}
+						</td>
+						<td>
+							{{ $slide->task ? $slide->task->solution : ""}}
 						</td>
 					</tr>
 				@endforeach

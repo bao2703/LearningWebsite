@@ -30,6 +30,7 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->middleware('admin')-
 	Route::name('slide.index')->get('/slide/{lesson}/lesson', 'SlideController@index');
 	Route::name('slide.create')->get('/slide/{lesson}/lesson/create', 'SlideController@create');
 	Route::name('slide.store')->post('/slide/{lesson}/lesson/store', 'SlideController@store');
+	Route::name('slide.edit')->get('/slide/{slide}/edit', 'SlideController@edit');
 });
 
 Auth::routes();

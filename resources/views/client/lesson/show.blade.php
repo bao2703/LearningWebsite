@@ -71,7 +71,7 @@
 					</div>
 					<div class="panel-body">
 						<div class="embed-responsive embed-responsive-4by3">
-							<iframe id="result-container" class="embed-responsive-item"></iframe>
+							<iframe id="result" class="embed-responsive-item"></iframe>
 						</div>
 					</div>
 				</div>
@@ -100,13 +100,14 @@
 		});
 
 		editor.on('change', function(e) {
+			$("#code").html(e.getValue());
 			$(".editor-form").submit();
 		});
 
 		$(".editor-form").submit(function(e) {
 			e.preventDefault();
-			var userProgress = editor.getValue();
-			var result = $('#result-container');
+			var userProgress = $("#code").val();
+			var result = $('#result');
 			result.ready(function() {
 				result.contents().find("body").html(userProgress);
 			});
@@ -123,6 +124,7 @@
 				},
 				success: function(response) {
 					var successTask = response.success_task;
+					console.log(successTask);
 					successTask.forEach(function(item) {
 						var icon = $('#task-' + item).find('div').find('i');
 						icon.removeClass('fa-close').addClass('fa-check').css("color", "green");
