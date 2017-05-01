@@ -18,14 +18,10 @@
 							       data-allowed-file-extensions='["jpeg", "gif", "png", "jpg"]'/>
 						</div>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-5">
 						<div class="form-group">
 							<label for="sort_order">Sort order</label>
 							<input type="text" class="form-control" name="sort_order" required>
-						</div>
-						<div class="form-group">
-							<label for="sort_order">Has task</label>
-							<input type="checkbox" class="" name="has_task">
 						</div>
 					</div>
 				</div>
@@ -49,6 +45,7 @@
 					<div class="col-sm-offset-1 col-sm-10">
 						<div class="form-group">
 							<button type="submit" class="btn btn-success">Create</button>
+							<a href="{{ route('admin.slide.index', $lesson) }}" class="btn btn-info">Back to list</a>
 						</div>
 					</div>
 				</div>

@@ -12,7 +12,7 @@ class SlideController extends Controller
 {
 	public function index(Lesson $lesson)
 	{
-		$slides = $lesson->slides()->paginate(10);
+		$slides = $lesson->slides()->orderBy('sort_order')->paginate(10);
 		return view('admin.slide.index')
 			->with('slides', $slides)
 			->with('lesson', $lesson);
@@ -33,13 +33,13 @@ class SlideController extends Controller
 					'image' => 'storage/' . $path,
 					'sort_order' => $request->sort_order,
 				]);
-				if ($request->has('has_task')) {
+				if ($request->has('task') || $request->has('solution')) {
 					$slide->task()->create([
 						'description' => $request->task,
 						'solution' => $request->solution
 					]);
 				}
-				return redirect()->route('admin.slide.index', $lesson->id);
+				return redirect()->route('admin.slide.index', $lesson);
 			}
 		}
 		$errors = new MessageBag(['image' => 'Image is required.']);
@@ -52,5 +52,34 @@ class SlideController extends Controller
 	public function edit(Slide $slide)
 	{
 		return view('admin.slide.edit')->with('slide', $slide);
+	}
+
+	public function update(Slide $slide, Request $request)
+	{
+		if ($request->hasFile('image')) {
+			$file = $request->file('image');
+			if ($file->isValid()) {
+				$path = $file->store('images', 'public');
+				$slide->update([
+					'image' => 'storage/' . $path,
+				]);
+			}
+		}
+		$slide->update([
+			'sort_order' => $request->sort_order,
+		]);
+		if ($slide->task) {
+			$slide->task()->update([
+				'description' => $request->task,
+				'solution' => $request->solution
+			]);
+		}
+		return redirect()->route('admin.slide.index', $slide->lesson);
+	}
+
+	public function destroy(Slide $slide)
+	{
+		Slide::destroy($slide->id);
+		return redirect()->route('admin.slide.index', $slide->lesson);
 	}
 }

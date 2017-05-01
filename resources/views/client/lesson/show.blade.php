@@ -22,7 +22,7 @@
 						<div id="lesson-slide" class="carousel" data-ride="carousel" data-interval="false">
 							<!-- carousel-inner -->
 							<div class="carousel-inner" role="listbox">
-								@foreach($lesson->slides as $slide)
+								@foreach($lesson->slides()->orderBy('sort_order')->get() as $slide)
 									<div class="item" data-id="{{ $slide->id }}" style="min-height: 250px">
 										<img src="{{ asset($slide->image) }}" class="img-responsive">
 										<div class="col-xs-12 text-center" id="task-content">

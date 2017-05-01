@@ -29,7 +29,10 @@
 							<form action="{{ route('admin.slide.edit', $slide) }}" method="get" style="display: inline">
 								<button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button>
 							</form>
-							<button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+							<form action="{{ route('admin.slide.destroy', $slide) }}" method="post" style="display: inline">
+								{{ csrf_field() }}
+								<button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+							</form>
 						</td>
 						<td>{{ $slide->sort_order }}</td>
 						<td>

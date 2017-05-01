@@ -4,11 +4,11 @@
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<div class="panel-title">
-				Create Slide
+				Edit Slide
 			</div>
 		</div>
 		<div class="panel-body">
-			<form action="" method="post" enctype="multipart/form-data">
+			<form action="{{ route('admin.slide.update', $slide) }}" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<div class="row">
 					<div class="col-sm-offset-1 col-sm-5">
@@ -43,7 +43,8 @@
 				<div class="row">
 					<div class="col-sm-offset-1 col-sm-10">
 						<div class="form-group">
-							<button type="submit" class="btn btn-primary">Create</button>
+							<button type="submit" class="btn btn-primary">Edit</button>
+							<a href="{{ route('admin.slide.index', $slide->lesson) }}" class="btn btn-info">Back to list</a>
 						</div>
 					</div>
 				</div>
