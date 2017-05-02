@@ -26,7 +26,7 @@ class ProjectController extends AdminController
 			'name' => $request->name,
 			'title' => $request->title
 		]);
-		Session::flash('message', 'Record has been created successfully');
+		Session::flash('message', 'Record has been created successfully.');
 		Session::flash('alert-class', 'alert-success');
 		return view('admin.project.create');
 	}
@@ -41,7 +41,7 @@ class ProjectController extends AdminController
 		$project->name = $request->name;
 		$project->title = $request->title;
 		$project->save();
-		Session::flash('message', 'Record has been updated successfully');
+		Session::flash('message', 'Record has been updated successfully.');
 		Session::flash('alert-class', 'alert-success');
 		return view('admin.project.edit')->with('project', $project);
 	}

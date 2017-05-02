@@ -25,7 +25,10 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->middleware('admin')-
 	Route::name('home')->get('/', 'HomeController@index');
 	Route::resource('project', ProjectController::class);
 	Route::name('project.delete')->get('/project/{project}/delete', 'ProjectController@delete');
+
 	Route::name('lesson.index')->get('/lesson/{project}/project', 'LessonController@index');
+	Route::name('lesson.create')->get('/lesson/{project}/project/create', 'LessonController@create');
+	Route::name('lesson.store')->post('/lesson/{project}/project/store', 'LessonController@store');
 
 	Route::name('slide.index')->get('/slide/{lesson}/lesson', 'SlideController@index');
 	Route::name('slide.create')->get('/slide/{lesson}/lesson/create', 'SlideController@create');

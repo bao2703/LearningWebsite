@@ -8,8 +8,14 @@
 			</div>
 		</div>
 		<div class="panel-body">
-			<form action="{{ route('admin.slide.store', $lesson->id) }}" method="post" enctype="multipart/form-data">
+			<form action="{{ route('admin.slide.store', $lesson) }}" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
+				<div class="row">
+					<div class="col-sm-offset-1 col-sm-10">
+						@include('shared.message')
+						@include('shared.error')
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-sm-offset-1 col-sm-5">
 						<div class="form-group">
@@ -21,7 +27,8 @@
 					<div class="col-sm-5">
 						<div class="form-group">
 							<label for="sort_order">Sort order</label>
-							<input type="text" class="form-control" name="sort_order" required>
+							<input type="text" class="form-control" name="sort_order" value="{{ old('sort_order') }}"
+							       required>
 						</div>
 					</div>
 				</div>
@@ -37,7 +44,7 @@
 					<div class="col-sm-offset-1 col-sm-10">
 						<div class="form-group">
 							<label for="solution">Solution</label>
-							<input type="text" class="form-control" name="solution">
+							<input type="text" class="form-control" name="solution" value="{{ old('solution') }}">
 						</div>
 					</div>
 				</div>

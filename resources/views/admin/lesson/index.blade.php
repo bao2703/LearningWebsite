@@ -11,21 +11,23 @@
 			<table class="table table-bordered table-responsive table-striped table-hover">
 				<thead>
 				<tr>
-					<th>Id</th>
+					<th>
+						<form action="{{ route('admin.lesson.create', $project) }}" method="get">
+							<button class="btn btn-success btn-sm" type="submit"><i class="fa fa-plus"></i></button>
+						</form>
+					</th>
 					<th>Name</th>
-					<th>Title</th>
 				</tr>
 				</thead>
 				<tbody>
 				@foreach($lessons as $lesson)
 					<tr>
-						<td>{{ $lesson->id }}</td>
+						<td></td>
 						<td>
 							<a href="{{ route('admin.slide.index', $lesson->id) }}">
 								{{ $lesson->name }}
 							</a>
 						</td>
-						<td>{{ $lesson->title }}</td>
 					</tr>
 				@endforeach
 				</tbody>

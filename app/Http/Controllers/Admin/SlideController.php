@@ -7,6 +7,7 @@ use App\Lesson;
 use App\Slide;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\Session;
 
 class SlideController extends Controller
 {
@@ -39,14 +40,14 @@ class SlideController extends Controller
 						'solution' => $request->solution
 					]);
 				}
-				return redirect()->route('admin.slide.index', $lesson);
+				Session::flash('message', 'Record has been created successfully.');
+				Session::flash('alert-class', 'alert-success');
+				return redirect()->route('admin.slide.create', $lesson);
 			}
 		}
-		$errors = new MessageBag(['image' => 'Image is required.']);
-
-		return redirect()->back()->with([
-			'errors' => $errors
-		]);
+		Session::flash('message', 'Image is required.');
+		Session::flash('alert-class', 'alert-danger');
+		return redirect()->route('admin.slide.create', $lesson);
 	}
 
 	public function edit(Slide $slide)
@@ -74,7 +75,9 @@ class SlideController extends Controller
 				'solution' => $request->solution
 			]);
 		}
-		return redirect()->route('admin.slide.index', $slide->lesson);
+		Session::flash('message', 'Record has been updated successfully.');
+		Session::flash('alert-class', 'alert-success');
+		return redirect()->route('admin.slide.edit', $slide);
 	}
 
 	public function destroy(Slide $slide)
