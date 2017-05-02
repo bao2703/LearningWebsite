@@ -22,7 +22,15 @@
 				<tbody>
 				@foreach($lessons as $lesson)
 					<tr>
-						<td></td>
+						<td>
+							<form action="{{ route('admin.lesson.edit', $lesson) }}" method="get">
+								<button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-pencil"></i></button>
+							</form>
+							<form action="{{ route('admin.lesson.destroy', $lesson) }}" method="post">
+								{{ csrf_field() }}
+								<button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash"></i></button>
+							</form>
+						</td>
 						<td>
 							<a href="{{ route('admin.slide.index', $lesson->id) }}">
 								{{ $lesson->name }}

@@ -20,7 +20,7 @@
 					<div class="col-sm-offset-1 col-sm-10">
 						<div class="form-group">
 							<label>Name</label>
-							<input class="form-control" name="name" value="{{ old('name') }}">
+							<input class="form-control" name="name" value="{{ old('name') }}" required>
 						</div>
 					</div>
 				</div>

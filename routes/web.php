@@ -29,6 +29,9 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->middleware('admin')-
 	Route::name('lesson.index')->get('/lesson/{project}/project', 'LessonController@index');
 	Route::name('lesson.create')->get('/lesson/{project}/project/create', 'LessonController@create');
 	Route::name('lesson.store')->post('/lesson/{project}/project/store', 'LessonController@store');
+	Route::name('lesson.edit')->get('/lesson/{lesson}/edit', 'LessonController@edit');
+	Route::name('lesson.update')->post('/lesson/{lesson}/update', 'LessonController@update');
+	Route::name('lesson.destroy')->post('/lesson/{lesson}/destroy', 'LessonController@destroy');
 
 	Route::name('slide.index')->get('/slide/{lesson}/lesson', 'SlideController@index');
 	Route::name('slide.create')->get('/slide/{lesson}/lesson/create', 'SlideController@create');

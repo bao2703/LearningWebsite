@@ -43,7 +43,7 @@ class ProjectController extends AdminController
 		$project->save();
 		Session::flash('message', 'Record has been updated successfully.');
 		Session::flash('alert-class', 'alert-success');
-		return view('admin.project.edit')->with('project', $project);
+		return redirect()->route('admin.project.edit', $project);
 	}
 
 	public function delete(Project $project)
