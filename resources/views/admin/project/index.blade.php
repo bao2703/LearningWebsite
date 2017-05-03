@@ -45,5 +45,10 @@
 				</tbody>
 			</table>
 		</div>
+		<div class="panel-footer">
+			<center>
+				{{ $projects->links() }}
+			</center>
+		</div>
 	</div>
 @endsection

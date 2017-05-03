@@ -12,7 +12,7 @@ class LessonController extends AdminController
 {
     public function index(Project $project)
     {
-    	$lessons = $project->lessons;
+    	$lessons = $project->lessons()->paginate(10);
 	    return view('admin.lesson.index')
 		    ->with('lessons', $lessons)
 		    ->with('project', $project);

@@ -23,10 +23,10 @@
 				@foreach($lessons as $lesson)
 					<tr>
 						<td>
-							<form action="{{ route('admin.lesson.edit', $lesson) }}" method="get">
+							<form action="{{ route('admin.lesson.edit', $lesson) }}" method="get" style="display: inline">
 								<button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-pencil"></i></button>
 							</form>
-							<form action="{{ route('admin.lesson.destroy', $lesson) }}" method="post">
+							<form action="{{ route('admin.lesson.destroy', $lesson) }}" method="post" style="display: inline">
 								{{ csrf_field() }}
 								<button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash"></i></button>
 							</form>
@@ -40,6 +40,11 @@
 				@endforeach
 				</tbody>
 			</table>
+		</div>
+		<div class="panel-footer">
+			<center>
+				{{ $lessons->links() }}
+			</center>
 		</div>
 	</div>
 @endsection

@@ -48,6 +48,8 @@
 				@endforeach
 				</tbody>
 			</table>
+		</div>
+		<div class="panel-footer">
 			<center>
 				{{ $slides->links() }}
 			</center>

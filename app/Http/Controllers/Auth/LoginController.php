@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
-	protected $redirectTo = '/home';
 
 	public function __construct()
 	{
@@ -27,13 +26,9 @@ class LoginController extends Controller
 		$this->validator($request->all())->validate();
 
 		$credentials = ['email' => $request->email, 'password' => $request->password];
-		// TODO: check role here
 
 		if (Auth::attempt($credentials, $request->has('remember'))) {
-			if (Auth::user()->isAdmin)
-				return redirect()->intended(route('admin.home'));
-			else
-				return redirect()->intended(route('home'));
+			return redirect()->intended(route('admin.home'));
 		}
 
 		$errors = new MessageBag(['password' => 'Email or password invalid.']);
