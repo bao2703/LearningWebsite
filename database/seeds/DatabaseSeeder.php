@@ -32,6 +32,62 @@ class DatabaseSeeder extends Seeder
 <input type="email" placeholder="Your email">
 <input type="submit">',
 			]),
+			new Lesson([
+				'name' => 'Add a background image and logo',
+				'content' => '<!DOCTYPE html>
+<head>
+  <title>Anna Dowlin</title>
+  <style>
+    body {
+      text-align: center;
+      background: black;
+      color: white;
+      font-family: helvetica;
+    }
+  </style>
+</head>
+<body>
+  <h1>Anna Dowlin</h1>
+  <p>Hi! I\'m Anna, a NYC-based marketer. Say hello!</p>
+  <input type="email" placeholder="Your email">
+  <input type="submit">
+</body>'
+			]),
+			new Lesson([
+				'name' => 'Build your own personal website',
+				'content' => '<!DOCTYPE html>
+<head>
+  <title>Anna Dowlin</title>
+  <style>
+    body {
+      text-align: center;
+      background: url("http://dash.ga.co/assets/anna-bg.png");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      font-family: helvetica;
+    }
+    p {
+      font-size: 22px;
+    }
+    input {
+      border: 0;
+      padding: 10px;
+      font-size: 18px;
+    }
+    input[type="submit"] {
+      background: red;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <img src="/assets/anna.png">
+  <p>Hi! I\'m Anna, a NYC-based marketer. Say hello!</p>
+  <input type="email" placeholder="Your email">
+  <input type="submit">
+</body>'
+			]),
 		]);
 
 		for ($i = 1; $i <= 29; $i++) {
@@ -134,6 +190,70 @@ class DatabaseSeeder extends Seeder
 			'solution' => 'TODO: make solution',
 			'slide_id' => 29 + 41
 		]);
+
+		for ($i = 1; $i <= 36; $i++) {
+			Slide::create([
+				'image' => 'storage/images/project-1/lesson-3/slide-' . $i . '.jpg',
+				'sort_order' => $i,
+				'lesson_id' => '3'
+			]);
+		}
+
+		Task::create([
+			'description' => 'Replace the <h1> tag with <img src="/storage/images/anna.png">',
+			'solution' => 'TODO: make solution',
+			'slide_id' => 29 + 43 + 7
+		]);
+
+		Task::create([
+			'description' => 'Change the background from "black" to url("http://localhost:8000/storage/images/anna-bg.png");',
+			'solution' => 'TODO: make solution',
+			'slide_id' => 29 + 43 + 15
+		]);
+
+		Task::create([
+			'description' => 'Set the background-size to cover',
+			'solution' => 'TODO: make solution',
+			'slide_id' => 29 + 43 + 18
+		]);
+
+		Task::create([
+			'description' => 'Set the body\'s background-position to center',
+			'solution' => 'TODO: make solution',
+			'slide_id' => 29 + 43 + 20
+		]);
+
+		Task::create([
+			'description' => 'Set the paragraph\'s font-size to 22px',
+			'solution' => 'TODO: make solution',
+			'slide_id' => 29 + 43 + 24
+		]);
+
+		Task::create([
+			'description' => 'Set the border of the inputs to 0',
+			'solution' => 'TODO: make solution',
+			'slide_id' => 29 + 43 + 26
+		]);
+
+		Task::create([
+			'description' => 'Set the input\'s font-size to 18px',
+			'solution' => 'TODO: make solution',
+			'slide_id' => 29 + 43 + 30
+		]);
+
+		Task::create([
+			'description' => 'Set the submit input\'s color to white',
+			'solution' => 'TODO: make solution',
+			'slide_id' => 29 + 43 + 34
+		]);
+
+		for ($i = 1; $i <= 7; $i++) {
+			Slide::create([
+				'image' => 'storage/images/project-1/lesson-4/slide-' . $i . '.jpg',
+				'sort_order' => $i,
+				'lesson_id' => '4'
+			]);
+		}
 
 		/////////////////////////////
 		User::create([

@@ -107,7 +107,7 @@
 			e.preventDefault();
 			var userProgress = editor.getValue();
 			var previewFrame = document.getElementById('preview-frame');
-			var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;
+			var preview =  previewFrame.contentDocument;
 			preview.open();
 			preview.write(editor.getValue());
 			preview.close();
