@@ -56,7 +56,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-								<textarea id="code">{{ $user_progress }}</textarea>
+								<textarea id="code">{!! $user_progress !!}</textarea>
 							</div>
 						</div>
 					</div>
@@ -71,7 +71,7 @@
 					</div>
 					<div class="panel-body">
 						<div class="embed-responsive embed-responsive-4by3">
-							<iframe id="result" class="embed-responsive-item"></iframe>
+							<iframe id="preview-frame" class="embed-responsive-item"></iframe>
 						</div>
 					</div>
 				</div>
@@ -100,17 +100,17 @@
 		});
 
 		editor.on('change', function(e) {
-			$("#code").html(e.getValue());
 			$(".editor-form").submit();
 		});
 
 		$(".editor-form").submit(function(e) {
 			e.preventDefault();
-			var userProgress = $("#code").val();
-			var result = $('#result');
-			result.ready(function() {
-				result.contents().find("body").html(userProgress);
-			});
+			var userProgress = editor.getValue();
+			var previewFrame = document.getElementById('preview-frame');
+			var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;
+			preview.open();
+			preview.write(editor.getValue());
+			preview.close();
 
 			$.ajax({
 				url: '{{ route('task.check') }}',

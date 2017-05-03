@@ -6,7 +6,6 @@ use App\Slide;
 use App\Task;
 use App\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,7 +27,10 @@ class DatabaseSeeder extends Seeder
 			]),
 			new Lesson([
 				'name' => 'Style the background and text',
-				'content' =>'<h1>Hello</h1>',
+				'content' => '<h1>Anna Dowlin</h1>
+<p>Hi! I\'m Anna, a NYC-based marketer. Say hello!</p>
+<input type="email" placeholder="Your email">
+<input type="submit">',
 			]),
 		]);
 
@@ -37,14 +39,6 @@ class DatabaseSeeder extends Seeder
 				'image' => 'storage/images/project-1/lesson-1/slide-' . $i . '.jpg',
 				'sort_order' => $i,
 				'lesson_id' => '1'
-			]);
-		}
-
-		for ($i = 1; $i <= 10; $i++) {
-			Task::create([
-				'description' => 'Task '.$i.' write this shit: <h1>Hello'.$i.'</h1>',
-				'solution' => '<h1>Hello'.$i.'</h1>',
-				'slide_id' => $i
 			]);
 		}
 
@@ -60,6 +54,39 @@ class DatabaseSeeder extends Seeder
 			'slide_id' => 14
 		]);
 
+		Task::create([
+			'description' => 'At the bottom, write <input type="email">',
+			'solution' => '<input type="email">',
+			'slide_id' => 19
+		]);
+
+		Task::create([
+			'description' => 'Make another input with type="submit"',
+			'solution' => '<input type="submit">',
+			'slide_id' => 23
+		]);
+
+		Task::create([
+			'description' => 'Add placeholder="Your email" to the email input. (If you need a hint, look at the previous slide)',
+			'solution' => '<input type="email" placeholder="Your email">',
+			'slide_id' => 27
+		]);
+
+		for ($i = 1; $i <= 43; $i++) {
+			Slide::create([
+				'image' => 'storage/images/project-1/lesson-2/slide-' . $i . '.jpg',
+				'sort_order' => $i,
+				'lesson_id' => '2'
+			]);
+		}
+
+		Task::create([
+			'description' => 'On the first line, before everything else, write: <style></style>',
+			'solution' => '<style></style>',
+			'slide_id' => 29 + 8
+		]);
+
+		/////////////////////////////
 		User::create([
 			'name' => 'Neptune',
 			'email' => 'bao2703@gmail.com',
