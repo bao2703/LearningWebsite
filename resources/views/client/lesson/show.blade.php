@@ -47,17 +47,10 @@
 						</div>
 					</div>
 				</div>
-				<form action="" method="POST" class="editor-form">
+				<form action="" method="POST" class="editor-form" style="margin-top: -20px;">
 					<div class="panel panel-success">
-						<div class="panel-heading">
-							<div class="panel-title">
-								Type your code here
-							</div>
-						</div>
 						<div class="panel-body">
-							<div class="form-group">
-								<textarea id="code">{!! $user_progress !!}</textarea>
-							</div>
+							<textarea id="code">{{ $user_progress }}</textarea>
 						</div>
 					</div>
 				</form>
@@ -107,7 +100,7 @@
 			e.preventDefault();
 			var userProgress = editor.getValue();
 			var previewFrame = document.getElementById('preview-frame');
-			var preview =  previewFrame.contentDocument;
+			var preview = previewFrame.contentDocument;
 			preview.open();
 			preview.write(editor.getValue());
 			preview.close();

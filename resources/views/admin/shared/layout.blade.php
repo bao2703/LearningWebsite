@@ -61,7 +61,6 @@
 </div>
 
 <footer>
-	Footer
 </footer>
 </body>
 

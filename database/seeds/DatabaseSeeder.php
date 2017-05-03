@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
   <style>
     body {
       text-align: center;
-      background: url("http://dash.ga.co/assets/anna-bg.png");
+      background: url("http://localhost:8000/storage/images/anna-bg.png");
       background-size: cover;
       background-position: center;
       color: white;
@@ -82,7 +82,7 @@ class DatabaseSeeder extends Seeder
   </style>
 </head>
 <body>
-  <img src="/assets/anna.png">
+  <img src="/storage/images/anna.png">
   <p>Hi! I\'m Anna, a NYC-based marketer. Say hello!</p>
   <input type="email" placeholder="Your email">
   <input type="submit">
