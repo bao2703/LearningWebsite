@@ -83,7 +83,56 @@ class DatabaseSeeder extends Seeder
 		Task::create([
 			'description' => 'On the first line, before everything else, write: <style></style>',
 			'solution' => '<style></style>',
+			'regex' => '<style><\\/style>',
 			'slide_id' => 29 + 8
+		]);
+
+		Task::create([
+			'description' => 'Make a new style that centers the text in the p tag',
+			'solution' => '<style></style>',
+			'slide_id' => 29 + 16
+		]);
+
+		Task::create([
+			'description' => 'Wrap a <body> tag around the h1, p, and input elements',
+			'solution' => 'TODO: make solution',
+			'slide_id' => 29 + 22
+		]);
+
+		Task::create([
+			'description' => 'Make everything in the body centered by styling the body!',
+			'solution' => 'TODO: make solution',
+			'slide_id' => 29 + 25
+		]);
+
+		Task::create([
+			'description' => 'Wrap a <head> tag around your <style> tag',
+			'solution' => 'TODO: make solution',
+			'slide_id' => 29 + 28
+		]);
+
+		Task::create([
+			'description' => 'Write <!DOCTYPE html> on the first line, above everything else',
+			'solution' => 'TODO: make solution',
+			'slide_id' => 29 + 32
+		]);
+
+		Task::create([
+			'description' => 'Set the body\'s background to black',
+			'solution' => 'TODO: make solution',
+			'slide_id' => 29 + 37
+		]);
+
+		Task::create([
+			'description' => 'Change the color of the body\'s text to white',
+			'solution' => 'TODO: make solution',
+			'slide_id' => 29 + 39
+		]);
+
+		Task::create([
+			'description' => 'Change the body\'s font-family to helvetica',
+			'solution' => 'TODO: make solution',
+			'slide_id' => 29 + 41
 		]);
 
 		/////////////////////////////

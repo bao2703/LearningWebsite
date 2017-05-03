@@ -20,10 +20,18 @@ class TaskController extends Controller
 		foreach ($lesson->slides as $slide) {
 			if ($slide->task) {
 				$solution = $slide->task->solution;
+
 				if (str_contains(strtolower($user_progress), strtolower($solution))) {
 					$user->tasks()->syncWithoutDetaching([$slide->task->id]);
 					$success_task[] = $slide->task->id;
 				}
+
+//				$regex = $slide->task->regex;
+//				preg_match('/'.$regex.'/', $user_progress, $matches);
+//				if ($matches) {
+//					$user->tasks()->syncWithoutDetaching([$slide->task->id]);
+//					$success_task[] = $slide->task->id;
+//				}
 			}
 		}
 
