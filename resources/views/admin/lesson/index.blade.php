@@ -1,6 +1,8 @@
 @extends('admin.shared.layout')
 
 @section('content')
+	@include('shared.modal.modal')
+
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<div class="panel-title">
@@ -31,6 +33,9 @@
 								{{ csrf_field() }}
 								<button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash"></i></button>
 							</form>
+							<a href="{{ route('admin.lesson.show', $lesson) }}" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal">
+								<i class="fa fa-list"></i>
+							</a>
 						</td>
 						<td>
 							<a href="{{ route('admin.slide.index', $lesson->id) }}">

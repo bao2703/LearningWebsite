@@ -52,6 +52,11 @@ class LessonController extends AdminController
 		return view('admin.lesson.edit')->with('lesson', $lesson);
 	}
 
+	public function show(Lesson $lesson)
+	{
+		return view('admin.lesson.show')->with('lesson', $lesson);
+	}
+
 	public function destroy(Lesson $lesson)
 	{
 		$lesson->delete();
