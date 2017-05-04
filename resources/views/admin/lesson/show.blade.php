@@ -1,14 +1,11 @@
 @include('shared.modal.header', ['title' => 'Lesson Detail'])
-<form action="{{ route('admin.project.store') }}" method="post" class="modal-form">
-	{{ csrf_field() }}
-	<div class="modal-body form-horizontal">
-		<div class="row">
-			<div class="col-sm-12">
-				<textarea id="code">{{ $lesson->content }}</textarea>
-			</div>
+<div class="modal-body form-horizontal">
+	<div class="row">
+		<div class="col-sm-12">
+			<textarea id="code">{{ $lesson->content }}</textarea>
 		</div>
 	</div>
-</form>
+</div>
 
 <script>
 	var mixedMode = {
