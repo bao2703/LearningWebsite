@@ -39,4 +39,14 @@ class Lesson extends Model
 			->withPivot('user_progress')
 			->withTimestamps();
 	}
+
+	public function scopeSearchBy($query, $searchString)
+	{
+		if ($searchString != '') {
+			$query->where(function ($query) use ($searchString) {
+				$query->where("name", "LIKE", "%$searchString%");
+			});
+		}
+		return $query;
+	}
 }

@@ -39,4 +39,15 @@ class User extends Authenticatable
 		return $this->belongsToMany('App\Task')
 			->withTimestamps();
 	}
+
+	public function scopeSearchBy($query, $searchString)
+	{
+		if ($searchString != '') {
+			$query->where(function ($query) use ($searchString) {
+				$query->where("name", "LIKE", "%$searchString%")
+					->orWhere("email", "LIKE", "%$searchString%");
+			});
+		}
+		return $query;
+	}
 }

@@ -9,10 +9,13 @@ use Illuminate\Support\Facades\Session;
 
 class ProjectController extends AdminController
 {
-	public function index()
+	public function index(Request $request)
 	{
-		$projects = Project::orderBy('sort_order')->paginate(10);
-		return view('admin.project.index')->with('projects', $projects);
+		$search = $request->search;
+		$projects = Project::searchBy($search)->orderBy('sort_order')->paginate(10);
+		return view('admin.project.index')
+			->with('projects', $projects)
+			->with('search', $search);
 	}
 
 	public function create()

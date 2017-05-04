@@ -27,4 +27,15 @@ class Project extends Model
 	{
 		return $this->hasMany('App\Lesson');
 	}
+
+	public function scopeSearchBy($query, $searchString)
+	{
+		if ($searchString != '') {
+			$query->where(function ($query) use ($searchString) {
+				$query->where("name", "LIKE", "%$searchString%")
+					->orWhere("title", "LIKE", "%$searchString%");
+			});
+		}
+		return $query;
+	}
 }

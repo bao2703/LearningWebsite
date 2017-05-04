@@ -4,14 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class UserController extends AdminController
 {
-	public function index()
+	public function index(Request $request)
 	{
-		$user = User::paginate(10);
-		return view('admin.user.index')->with('users', $user);
+		$search = $request->search;
+		$user = User::searchBy($search)->paginate(10);
+		return view('admin.user.index')
+			->with('users', $user)
+			->with('search', $search);
 	}
 
 	public function destroy(User $user)

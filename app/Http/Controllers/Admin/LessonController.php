@@ -10,12 +10,14 @@ use Illuminate\Support\Facades\Session;
 
 class LessonController extends AdminController
 {
-    public function index(Project $project)
+    public function index(Project $project, Request $request)
     {
-    	$lessons = $project->lessons()->orderBy('sort_order')->paginate(10);
+	    $search = $request->search;
+    	$lessons = $project->lessons()->searchBy($search)->orderBy('sort_order')->paginate(10);
 	    return view('admin.lesson.index')
 		    ->with('lessons', $lessons)
-		    ->with('project', $project);
+		    ->with('project', $project)
+		    ->with('search', $search);
     }
 
 	public function create(Project $project)

@@ -10,6 +10,16 @@
 			</div>
 		</div>
 		<div class="panel-body">
+			<div class="row">
+				<form class="col-sm-3 form-horizontal pull-right" method="get">
+					<div class="form-group">
+						<label for="search" class="col-sm-3 control-label">Search</label>
+						<div class="col-sm-9">
+							<input class="form-control" name="search" value="{{ $search }}">
+						</div>
+					</div>
+				</form>
+			</div>
 			<table class="table table-bordered table-responsive table-striped table-hover">
 				<thead>
 				<tr>
