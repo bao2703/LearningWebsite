@@ -27,5 +27,21 @@
 	top: 0;
 	position: absolute;
   }
+
+  .project-screenshot {
+	height: 20px;
+	background: #444;
+	border-radius: 5px 5px 0px 0px;
+	padding-left: 5px;
+
+	span {
+	  border-radius: 100%;
+	  width: 8px;
+	  height: 8px;
+	  background: #888;
+	  display: inline-block;
+	  margin-left: 3px;
+	}
+  }
 }
 

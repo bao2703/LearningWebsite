@@ -38,9 +38,10 @@ class ProjectController extends AdminController
 
 	public function update(Request $request, Project $project)
 	{
-		$project->name = $request->name;
-		$project->title = $request->title;
-		$project->save();
+		$project->update([
+			'name' => $request->name,
+			'title' => $request->title
+		]);
 		Session::flash('message', 'Record has been updated successfully.');
 		Session::flash('alert-class', 'alert-success');
 		return redirect()->route('admin.project.edit', $project);
@@ -53,7 +54,7 @@ class ProjectController extends AdminController
 
 	public function destroy(Project $project)
 	{
-		Project::destroy($project->id);
+		$project->delete();
 		return view('admin.project.delete')->with('project', $project);
 	}
 }

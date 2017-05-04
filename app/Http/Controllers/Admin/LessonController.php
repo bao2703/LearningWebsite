@@ -52,7 +52,7 @@ class LessonController extends AdminController
 
 	public function destroy(Lesson $lesson)
 	{
-		Lesson::destroy($lesson->id);
+		$lesson->delete();
 		return redirect()->route('admin.lesson.index', $lesson->project);
 	}
 }

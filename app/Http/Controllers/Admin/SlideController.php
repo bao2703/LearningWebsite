@@ -82,7 +82,7 @@ class SlideController extends Controller
 
 	public function destroy(Slide $slide)
 	{
-		Slide::destroy($slide->id);
+		$slide->delete();
 		return redirect()->route('admin.slide.index', $slide->lesson);
 	}
 }

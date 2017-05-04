@@ -255,6 +255,201 @@ class DatabaseSeeder extends Seeder
 			]);
 		}
 
+		$project_2 = Project::create([
+			'name' => 'BUILD A RESPONSIVE BLOG THEME',
+			'title' => 'Anna\'s friend Jeff needs a custom theme for his poetry blog'
+		]);
+
+		$project_2->lessons()->saveMany([
+			new Lesson([
+				'name' => 'Make the header and navigation HTML',
+				'content' => ''
+			]),
+			new Lesson([
+				'name' => 'Style the header with CSS',
+				'content' => '<!DOCTYPE html>
+<head>
+</head>
+<body>
+  <header>
+    <img src="/storage/images/jeff.png">
+    <h1>Jeff\'s Blog</h1>
+    <ul>
+      <li><a href="#">About Me</a></li>
+      <li><a href="#">Best Poems</a></li>
+      <li><a href="#">Worst Poems</a></li>
+    </ul>
+  </header>
+</body>'
+			]),
+			new Lesson([
+				'name' => 'Add responsive design + "like" button',
+				'content' => '<!DOCTYPE html>
+<head>
+  <link href="/normalize.css" rel="stylesheet">
+  <style>
+    header {
+      text-align: center;
+      background: url("http://localhost:8000/storage/images/jeff-bg.png");
+      background-size: cover;
+      color: white;
+    }
+    a {
+      color: white;
+    }
+    h1 {
+      font-size: 70px;
+    }
+    img {
+      margin: 40px 0px 0px 0px;
+      border: 7px solid white;
+      border-radius: 20px;
+    }
+    ul {
+      padding: 10px;
+      background: black;
+    }
+    li {
+      display: inline;
+      padding: 0px 10px 0px 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="/assets/jeff.png">
+    <h1>Jeff\'s Blog</h1>
+    <ul>
+      <li><a href="#">About Me</a></li>
+      <li><a href="#">Best Poems</a></li>
+      <li><a href="#">Worst Poems</a></li>
+    </ul>
+  </header>
+  <h2>VHS umami pop-up trust fund</h2>
+  <p>Marfa church-key kitsch bicycle rights, 8-bit mixtape cardigan gentrify Echo Park. Street art swag brunch, next level roof party Schlitz hella organic keffiyeh selfies. You probably haven\'t heard of them polaroid hashtag +1, meggings biodiesel Portland High Life cray tumblr retro.</p>
+  <h2>Sartorial synth Echo Park, roof party</h2>
+  <p>chambray you probably haven\'t heard of them pour-over viral selvage umami skateboard VHS post-ironic selfies. Wes Anderson gentrify fanny pack twee, bicycle rights bitters blog keffiyeh plaid flannel. Tonx irony cliche sustainable mlkshk bitters. Four loko leggings chambray Vice.</p>
+  <h2>Forage food truck keytar master cleanse</h2>
+  <p>ethical thundercats sustainable locavore quinoa Neutra. Aesthetic tacky sweater single-origin coffee, bicycle rights organic lo-fi street art american apparel ennui four loko ethnic Brooklyn small batch. Forage YOLO polaroid</p>
+</body>
+'
+			]),
+			new Lesson([
+				'name' => 'Build your own blog theme',
+				'content' => '<!DOCTYPE html>
+<head>
+  <link href="/normalize.css" rel="stylesheet">
+  <style>
+    header {
+      text-align: center;
+      background: url("http://localhost:8000/storage/images/jeff-bg.png");
+      background-size: cover;
+      color: white;
+    }
+    a {
+      color: white;
+    }
+    h1 {
+      font-size: 70px;
+    }
+    img {
+      margin: 40px 0px 0px 0px;
+      border: 7px solid white;
+      border-radius: 20px;
+    }
+    ul {
+      padding: 10px;
+      background: rgba(0,0,0,0.5);
+    }
+    li {
+      display: inline;
+      padding: 0px 10px 0px 10px;
+    }
+    article {
+      max-width: 500px;
+      padding: 20px;
+      margin: 0 auto;
+    }
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 36px;
+        padding: 5px;
+      }
+      li {
+        padding: 5px;
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="/assets/jeff.png">
+    <h1>Jeff\'s Blog</h1>
+    <ul>
+      <li><a href="#">About Me</a></li>
+      <li><a href="#">Best Poems</a></li>
+      <li><a href="#">Worst Poems</a></li>
+    </ul>
+  </header>
+  <article>
+    <h2>VHS umami pop-up trust fund</h2>
+    <p>Marfa church-key kitsch bicycle rights, 8-bit mixtape cardigan gentrify Echo Park. Street art swag brunch, next level roof party Schlitz hella organic keffiyeh selfies. You probably haven\'t heard of them polaroid hashtag +1, meggings biodiesel Portland High Life cray tumblr retro.</p>
+    <button>Like</button>
+  </article>
+  <article>
+    <h2>Sartorial synth Echo Park, roof party</h2>
+    <p>chambray you probably haven\'t heard of them pour-over viral selvage umami skateboard VHS post-ironic selfies. Wes Anderson gentrify fanny pack twee, bicycle rights bitters blog keffiyeh plaid flannel. Tonx irony cliche sustainable mlkshk bitters. Four loko leggings chambray Vice.</p>
+    <button>Like</button>
+  </article>
+  <article>
+    <h2>Forage food truck keytar master cleanse</h2>
+    <p>ethical thundercats sustainable locavore quinoa Neutra. Aesthetic tacky sweater single-origin coffee, bicycle rights organic lo-fi street art american apparel ennui four loko ethnic Brooklyn small batch. Forage YOLO polaroid</p>
+    <button>Like</button>
+  </article>
+  <script>
+    $("button").on("click", function() {
+      alert("Clicked!");
+    });
+  </script>
+</body>
+'
+			]),
+		]);
+
+		for ($i = 1; $i <= 28; $i++) {
+			Slide::create([
+				'image' => 'storage/images/project-2/lesson-1/slide-' . $i . '.jpg',
+				'sort_order' => $i,
+				'lesson_id' => 4 + 1
+			]);
+		}
+
+		for ($i = 1; $i <= 43; $i++) {
+			Slide::create([
+				'image' => 'storage/images/project-2/lesson-2/slide-' . $i . '.jpg',
+				'sort_order' => $i,
+				'lesson_id' => 4 + 2
+			]);
+		}
+
+		for ($i = 1; $i <= 6; $i++) {
+			Slide::create([
+				'image' => 'storage/images/project-2/lesson-3/slide-' . $i . '.jpg',
+				'sort_order' => $i,
+				'lesson_id' => 4 + 3
+			]);
+		}
+
+		for ($i = 1; $i <= 43; $i++) {
+			Slide::create([
+				'image' => 'storage/images/project-2/lesson-4/slide-' . $i . '.jpg',
+				'sort_order' => $i,
+				'lesson_id' => 4 + 4
+			]);
+		}
+
+
 		/////////////////////////////
 		User::create([
 			'name' => 'Neptune',
