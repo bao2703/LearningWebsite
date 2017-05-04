@@ -2,9 +2,9 @@
 
 @section('content')
 	<div class="container">
-		@foreach($projects as $project)
-			<div class="row">
-				<div class="col-sm-offset-1 col-sm-7">
+		<div class="row">
+			@foreach($projects as $project)
+				<div class="col-sm-offset-2 col-sm-8">
 					<div class="panel panel-info">
 						<div class="panel-heading">
 							<h4>{{ $project->name }}</h4>
@@ -21,7 +21,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		@endforeach
+			@endforeach
+		</div>
 	</div>
 @endsection

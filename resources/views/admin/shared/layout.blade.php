@@ -15,7 +15,7 @@
 		]) !!};
 	</script>
 
-	<title>Neptune</title>
+	<title>Admin's Neptune</title>
 
 	<!-- styles -->
 	<link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">

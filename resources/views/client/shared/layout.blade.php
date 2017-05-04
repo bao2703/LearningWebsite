@@ -13,7 +13,7 @@
         ]) !!};
 	</script>
 
-	<title>Laravel</title>
+	<title>Neptune</title>
 
 	<!-- styles -->
 	<link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">

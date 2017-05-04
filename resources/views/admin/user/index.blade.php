@@ -32,8 +32,11 @@
 				@foreach($users as $user)
 					<tr style="color: {{ $user->isAdmin ? 'red' : ''}}">
 						<td>
+							<form action="" method="get" style="display: inline">
+								<button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button>
+							</form>
 							@if(Auth::user() != $user)
-								<form action="{{ route('admin.user.destroy', $user) }}" method="post">
+								<form action="{{ route('admin.user.destroy', $user) }}" method="post" style="display: inline">
 									{{ csrf_field() }}
 									{{ method_field('DELETE') }}
 									<button class="btn btn-danger btn-sm">
