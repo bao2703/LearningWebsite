@@ -28,6 +28,16 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-sm-11">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">
+						Order
+					</label>
+					<div class="col-sm-9">
+						<input class="form-control" name="sort_order" value="{{ $project->sort_order }}" readonly/>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	@include('shared.modal.footer', [

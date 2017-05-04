@@ -17,6 +17,7 @@
 						</form>
 					</th>
 					<th>Name</th>
+					<th>Order</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -36,6 +37,7 @@
 								{{ $lesson->name }}
 							</a>
 						</td>
+						<td>{{ $lesson->sort_order }}</td>
 					</tr>
 				@endforeach
 				</tbody>

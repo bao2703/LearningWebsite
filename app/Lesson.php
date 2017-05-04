@@ -12,7 +12,7 @@ class Lesson extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		'name', 'content'
+		'name', 'content', 'sort_order'
 	];
 
 	/**

@@ -25,6 +25,7 @@ class CreateLessonRequest extends FormRequest
     {
         return [
 	        'name' => 'required|unique:lessons',
+	        'sort_order' => 'integer'
         ];
     }
 }

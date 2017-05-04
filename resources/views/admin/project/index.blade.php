@@ -10,17 +10,17 @@
 			</div>
 		</div>
 		<div class="panel-body">
-			<div class="btn-group">
-				<a href="{{ route('admin.project.create') }}" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal">
-					<i class="fa fa-plus"></i>
-				</a>
-			</div>
 			<table class="table table-bordered table-responsive table-striped table-hover">
 				<thead>
 				<tr>
-					<th>#</th>
+					<th>
+						<a href="{{ route('admin.project.create') }}" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal">
+							<i class="fa fa-plus"></i>
+						</a>
+					</th>
 					<th>Name</th>
 					<th>Title</th>
+					<th>Order</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -40,6 +40,7 @@
 							</a>
 						</td>
 						<td>{{ $project->title }}</td>
+						<td>{{ $project->sort_order }}</td>
 					</tr>
 				@endforeach
 				</tbody>

@@ -12,7 +12,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="list-group">
-								@foreach($project->lessons as $i => $lesson)
+								@foreach($project->lessons()->orderBy('sort_order')->get() as $i => $lesson)
 									<a href="{{ route('lesson.show', $lesson) }}" class="list-group-item">
 										{{ $i + 1 }}. {{ $lesson->name }}
 									</a>

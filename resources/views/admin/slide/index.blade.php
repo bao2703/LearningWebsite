@@ -16,8 +16,8 @@
 							<button class="btn btn-success btn-sm" type="submit"><i class="fa fa-plus"></i></button>
 						</form>
 					</th>
-					<th>Sort order</th>
 					<th>Image</th>
+					<th>Order</th>
 					<th>Task</th>
 					<th>Solution</th>
 				</tr>
@@ -34,10 +34,10 @@
 								<button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
 							</form>
 						</td>
-						<td>{{ $slide->sort_order }}</td>
 						<td>
 							<img src="{{ asset($slide->image) }}" class="img-responsive" style="max-height: 150px">
 						</td>
+						<td>{{ $slide->sort_order }}</td>
 						<td>
 							{{ $slide->task ? $slide->task->description : ""}}
 						</td>

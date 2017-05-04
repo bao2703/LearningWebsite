@@ -9,9 +9,15 @@
 				{{ Auth::user()->name }} <span class="caret"></span>
 			</a>
 			<ul class="dropdown-menu" role="menu">
+				@if(Auth::user()->isAdmin)
+					<li>
+						<a href="{{ route('admin.home') }}">
+							Admin
+						</a>
+					</li>
+				@endif
 				<li>
-					<a href="{{ route('logout') }}"
-					   onclick="event.preventDefault();$('#logout-form').submit();">
+					<a onclick="event.preventDefault();$('#logout-form').submit();">
 						Logout
 					</a>
 					<form id="logout-form" action="{{ route('logout') }}" method="POST">

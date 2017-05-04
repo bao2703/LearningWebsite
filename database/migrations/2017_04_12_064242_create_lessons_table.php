@@ -17,6 +17,7 @@ class CreateLessonsTable extends Migration
 			$table->increments('id');
 			$table->string('name')->unique();
 			$table->longText('content')->nullable();
+			$table->integer('sort_order')->default(1);
 			$table->integer('project_id')->unsigned();
 			$table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
 			$table->timestamps();

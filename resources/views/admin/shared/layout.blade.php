@@ -10,12 +10,12 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<script>
-        window.Laravel = <?php echo json_encode([
+		window.Laravel = {!! json_encode([
 			'csrfToken' => csrf_token(),
-		]); ?>
+		]) !!};
 	</script>
 
-	<title>Laravel</title>
+	<title>Neptune</title>
 
 	<!-- styles -->
 	<link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
@@ -52,7 +52,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-2 col-md-2">
-
+			@include('admin.shared.sidebar')
 		</div>
 		<div class="col-sm-10 col-md-10">
 			@yield('content')

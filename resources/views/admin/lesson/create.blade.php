@@ -17,10 +17,16 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-sm-offset-1 col-sm-10">
+					<div class="col-sm-offset-1 col-sm-8">
 						<div class="form-group">
 							<label>Name</label>
 							<input class="form-control" name="name" value="{{ old('name') }}" required>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="form-group">
+							<label>Order</label>
+							<input class="form-control" name="sort_order" value="{{ old('sort_order') }}" required>
 						</div>
 					</div>
 				</div>

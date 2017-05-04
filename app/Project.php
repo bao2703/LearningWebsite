@@ -12,7 +12,7 @@ class Project extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		'name', 'title',
+		'name', 'title', 'sort_order'
 	];
 
 	/**

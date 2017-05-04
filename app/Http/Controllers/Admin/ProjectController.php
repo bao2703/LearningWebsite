@@ -11,7 +11,7 @@ class ProjectController extends AdminController
 {
 	public function index()
 	{
-		$projects = Project::paginate(10);
+		$projects = Project::orderBy('sort_order')->paginate(10);
 		return view('admin.project.index')->with('projects', $projects);
 	}
 
@@ -24,7 +24,8 @@ class ProjectController extends AdminController
 	{
 		Project::create([
 			'name' => $request->name,
-			'title' => $request->title
+			'title' => $request->title,
+			'sort_order' => $request->sort_order
 		]);
 		Session::flash('message', 'Record has been created successfully.');
 		Session::flash('alert-class', 'alert-success');
@@ -40,7 +41,8 @@ class ProjectController extends AdminController
 	{
 		$project->update([
 			'name' => $request->name,
-			'title' => $request->title
+			'title' => $request->title,
+			'sort_order' => $request->sort_order
 		]);
 		Session::flash('message', 'Record has been updated successfully.');
 		Session::flash('alert-class', 'alert-success');

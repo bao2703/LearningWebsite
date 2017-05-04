@@ -12,7 +12,7 @@ class LessonController extends AdminController
 {
     public function index(Project $project)
     {
-    	$lessons = $project->lessons()->paginate(10);
+    	$lessons = $project->lessons()->orderBy('sort_order')->paginate(10);
 	    return view('admin.lesson.index')
 		    ->with('lessons', $lessons)
 		    ->with('project', $project);
@@ -27,7 +27,8 @@ class LessonController extends AdminController
 	{
 		$project->lessons()->create([
 			'name' => $request->name,
-			'content' => $request->content
+			'content' => $request->content,
+			'sort_order' => $request->sort_order
 		]);
 		Session::flash('message', 'Record has been created successfully.');
 		Session::flash('alert-class', 'alert-success');
@@ -43,7 +44,8 @@ class LessonController extends AdminController
 	{
 		$lesson->update([
 			'name' => $request->name,
-			'content' => $request->content
+			'content' => $request->content,
+			'sort_order' => $request->sort_order
 		]);
 		Session::flash('message', 'Record has been updated successfully.');
 		Session::flash('alert-class', 'alert-success');

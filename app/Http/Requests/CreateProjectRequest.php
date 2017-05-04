@@ -26,6 +26,7 @@ class CreateProjectRequest extends FormRequest
         return [
             'name' => 'required|unique:projects',
 	        'title' => 'required',
+	        'sort_order' => 'integer'
         ];
     }
 }
