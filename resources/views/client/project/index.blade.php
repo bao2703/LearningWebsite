@@ -21,19 +21,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-3">
-					<div class="project-screenshot">
-						<span></span>
-						<span></span>
-						<span></span>
-					</div>
-					<img src="{{ asset('storage/images/anna-screenshot.png') }}" style="width: 100%">
-					<form style="margin-top: 15px">
-						<div class="form-group">
-							<button class="btn btn-primary btn-block">Restart</button>
-						</div>
-					</form>
-				</div>
 			</div>
 		@endforeach
 	</div>

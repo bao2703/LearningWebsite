@@ -74,6 +74,11 @@ class SlideController extends Controller
 				'description' => $request->task,
 				'solution' => $request->solution
 			]);
+		} else if ($request->has('task') || $request->has('solution')) {
+			$slide->task()->create([
+				'description' => $request->task,
+				'solution' => $request->solution
+			]);
 		}
 		Session::flash('message', 'Record has been updated successfully.');
 		Session::flash('alert-class', 'alert-success');

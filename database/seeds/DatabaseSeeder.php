@@ -139,7 +139,6 @@ class DatabaseSeeder extends Seeder
 		Task::create([
 			'description' => 'On the first line, before everything else, write: <style></style>',
 			'solution' => '<style></style>',
-			'regex' => '<style><\\/style>',
 			'slide_id' => 29 + 8
 		]);
 

@@ -25,13 +25,6 @@ class TaskController extends Controller
 					$user->tasks()->syncWithoutDetaching([$slide->task->id]);
 					$success_task[] = $slide->task->id;
 				}
-
-//				$regex = $slide->task->regex;
-//				preg_match('/'.$regex.'/', $user_progress, $matches);
-//				if ($matches) {
-//					$user->tasks()->syncWithoutDetaching([$slide->task->id]);
-//					$success_task[] = $slide->task->id;
-//				}
 			}
 		}
 
